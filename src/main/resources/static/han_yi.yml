@@ -1,0 +1,928 @@
+openapi: 3.0.0
+info:
+  title: Chinese Learning Platform API
+  description: API for managing Chinese language learning webapp
+  version: 1.0.0
+tags:
+  - name: Categories
+    description: Operations with course categories
+  - name: Courses
+    description: Operations with courses
+  - name: Lessons
+    description: Operations with lessons
+  - name: Entries
+    description: Operations with course entries
+  - name: Flashcards
+    description: Operations with flashcards
+  - name: Users
+    description: Operations with users
+paths:
+  /api/categories:
+    get:
+      tags: [Categories]
+      summary: Get all categories
+      responses:
+        '200':
+          description: List of categories retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryResponse'
+    post:
+      tags: [Categories]
+      summary: Create a new category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreateRequest'
+      responses:
+        '201':
+          description: Category created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+
+  /api/categories/{id}:
+    get:
+      tags: [Categories]
+      summary: Get a category by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Category retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '404':
+          description: Category not found
+    put:
+      tags: [Categories]
+      summary: Update a category
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreateRequest'
+      responses:
+        '200':
+          description: Category updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+    delete:
+      tags: [Categories]
+      summary: Delete a category
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Category deleted successfully
+        '404':
+          description: Category not found
+
+  /api/courses:
+    get:
+      tags: [Courses]
+      summary: Get all courses
+      responses:
+        '200':
+          description: List of courses retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CourseResponse'
+    post:
+      tags: [Courses]
+      summary: Create a new course
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseCreateRequest'
+      responses:
+        '201':
+          description: Course created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseResponse'
+
+  /api/courses/{id}:
+    get:
+      tags: [Courses]
+      summary: Get a course by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Course retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseResponse'
+    put:
+      tags: [Courses]
+      summary: Update a course
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseCreateRequest'
+      responses:
+        '200':
+          description: Course updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseResponse'
+    delete:
+      tags: [Courses]
+      summary: Delete a course
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Course deleted successfully
+
+  /api/courses/category/{categoryId}:
+    get:
+      tags: [Courses]
+      summary: Get courses by category ID
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of courses retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CourseResponse'
+
+  /api/lessons:
+    get:
+      tags: [Lessons]
+      summary: Get all lessons
+      responses:
+        '200':
+          description: List of lessons retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LessonResponse'
+    post:
+      tags: [Lessons]
+      summary: Create a new lesson
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LessonCreateRequest'
+      responses:
+        '201':
+          description: Lesson created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LessonResponse'
+
+  /api/lessons/{id}:
+    get:
+      tags: [Lessons]
+      summary: Get a lesson by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lesson retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LessonResponse'
+    put:
+      tags: [Lessons]
+      summary: Update a lesson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LessonCreateRequest'
+      responses:
+        '200':
+          description: Lesson updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LessonResponse'
+    delete:
+      tags: [Lessons]
+      summary: Delete a lesson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Lesson deleted successfully
+
+  /api/lessons/course/{courseId}:
+    get:
+      tags: [Lessons]
+      summary: Get lessons by course ID
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of lessons retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LessonResponse'
+
+  /api/entries:
+    get:
+      tags: [Entries]
+      summary: Get all entries
+      responses:
+        '200':
+          description: List of entries retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EntryResponse'
+    post:
+      tags: [Entries]
+      summary: Create a new entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntryCreateRequest'
+      responses:
+        '201':
+          description: Entry created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntryResponse'
+
+  /api/entries/{id}:
+    get:
+      tags: [Entries]
+      summary: Get an entry by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Entry retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntryResponse'
+    delete:
+      tags: [Entries]
+      summary: Delete an entry
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Entry deleted successfully
+
+  /api/entries/user/{userId}:
+    get:
+      tags: [Entries]
+      summary: Get entries by user ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of entries retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EntryResponse'
+
+  /api/entries/course/{courseId}:
+    get:
+      tags: [Entries]
+      summary: Get entries by course ID
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of entries retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EntryResponse'
+
+  /api/flashcards:
+    get:
+      tags: [Flashcards]
+      summary: Get all flashcards
+      responses:
+        '200':
+          description: List of flashcards retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FlashcardResponse'
+    post:
+      tags: [Flashcards]
+      summary: Create a new flashcard
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlashcardCreateRequest'
+      responses:
+        '201':
+          description: Flashcard created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlashcardResponse'
+
+  /api/flashcards/{id}:
+    get:
+      tags: [Flashcards]
+      summary: Get a flashcard by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Flashcard retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlashcardResponse'
+    put:
+      tags: [Flashcards]
+      summary: Update a flashcard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlashcardCreateRequest'
+      responses:
+        '200':
+          description: Flashcard updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlashcardResponse'
+    delete:
+      tags: [Flashcards]
+      summary: Delete a flashcard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Flashcard deleted successfully
+
+  /api/flashcards/user/{userId}:
+    get:
+      tags: [Flashcards]
+      summary: Get flashcards by user ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of flashcards retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FlashcardResponse'
+
+  /api/users:
+    get:
+      tags: [Users]
+      summary: Get all users
+      responses:
+        '200':
+          description: List of users retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserResponse'
+    post:
+      tags: [Users]
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+
+  /api/users/{id}:
+    get:
+      tags: [Users]
+      summary: Get a user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+    put:
+      tags: [Users]
+      summary: Update a user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+    delete:
+      tags: [Users]
+      summary: Delete a user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: User deleted successfully
+
+components:
+  schemas:
+    CategoryCreateRequest:
+      type: object
+      required: [name, description]
+      properties:
+        name:
+          type: string
+          maxLength: 25
+          example: "Beginner"
+        description:
+          type: string
+          maxLength: 125
+          example: "Courses for beginners"
+
+    CategoryResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Beginner"
+        description:
+          type: string
+          example: "Courses for beginners"
+        courses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryResponse_CourseResponse'
+
+    CategoryResponse_CourseResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        header:
+          type: string
+          example: "Basic Chinese"
+
+    CourseCreateRequest:
+      type: object
+      required: [header, description, categoryId, entryDate, exitDate]
+      properties:
+        header:
+          type: string
+          maxLength: 25
+          example: "Basic Chinese"
+        description:
+          type: string
+          maxLength: 125
+          example: "Introduction to Chinese language"
+        categoryId:
+          type: integer
+          example: 1
+        entryDate:
+          type: string
+          format: date-time
+          example: "2027-01-01T00:00:00Z"
+        exitDate:
+          type: string
+          format: date-time
+          example: "2027-06-01T00:00:00Z"
+        progress:
+          type: number
+          format: double
+          minimum: 0
+          maximum: 100
+          example: 0.0
+
+    CourseResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        header:
+          type: string
+          example: "Basic Chinese"
+        description:
+          type: string
+          example: "Introduction to Chinese language"
+        categoryId:
+          type: integer
+          example: 1
+        categoryName:
+          type: string
+          example: "Beginner"
+        entryDate:
+          type: string
+          format: date-time
+          example: "2027-01-01T00:00:00Z"
+        exitDate:
+          type: string
+          format: date-time
+          example: "2027-06-01T00:00:00Z"
+        progress:
+          type: number
+          format: double
+          example: 0.0
+        lessons:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseResponse_LessonResponse'
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseResponse_EntryResponse'
+
+    CourseResponse_LessonResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        lessonOrderNum:
+          type: integer
+          example: 1
+        header:
+          type: string
+          example: "Greetings"
+
+    CourseResponse_EntryResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        entryDate:
+          type: string
+          format: date-time
+          example: "2027-01-01T00:00:00Z"
+        userId:
+          type: integer
+          example: 1
+
+    LessonCreateRequest:
+      type: object
+      required: [lessonOrderNum, header, description, url, courseId]
+      properties:
+        lessonOrderNum:
+          type: integer
+          example: 1
+        header:
+          type: string
+          maxLength: 25
+          example: "Greetings"
+        description:
+          type: string
+          maxLength: 125
+          example: "Basic greetings in Chinese"
+        url:
+          type: string
+          maxLength: 125
+          example: "https://example.com/lesson1"
+        courseId:
+          type: integer
+          example: 1
+
+    LessonResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        lessonOrderNum:
+          type: integer
+          example: 1
+        header:
+          type: string
+          example: "Greetings"
+        description:
+          type: string
+          example: "Basic greetings in Chinese"
+        url:
+          type: string
+          example: "https://example.com/lesson1"
+        courseId:
+          type: integer
+          example: 1
+        courseHeader:
+          type: string
+          example: "Basic Chinese"
+
+    EntryCreateRequest:
+      type: object
+      required: [userId, courseId, entryDate]
+      properties:
+        userId:
+          type: integer
+          example: 1
+        courseId:
+          type: integer
+          example: 1
+        entryDate:
+          type: string
+          format: date-time
+          example: "2027-01-01T00:00:00Z"
+
+    EntryResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        userId:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: "student1"
+        courseId:
+          type: integer
+          example: 1
+        courseHeader:
+          type: string
+          example: "Basic Chinese"
+        entryDate:
+          type: string
+          format: date-time
+          example: "2027-01-01T00:00:00Z"
+
+    FlashcardCreateRequest:
+      type: object
+      required: [userId, frontText, backText]
+      properties:
+        userId:
+          type: integer
+          example: 1
+        frontText:
+          type: string
+          maxLength: 25
+          example: "你好"
+        backText:
+          type: string
+          maxLength: 35
+          example: "Hello"
+
+    FlashcardResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        userId:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: "student1"
+        frontText:
+          type: string
+          example: "你好"
+        backText:
+          type: string
+          example: "Hello"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2027-01-01T00:00:00Z"
+
+    UserCreateRequest:
+      type: object
+      required: [username, password, email, role]
+      properties:
+        username:
+          type: string
+          minLength: 5
+          maxLength: 25
+          example: "student1"
+        password:
+          type: string
+          minLength: 8
+          example: "password123"
+        email:
+          type: string
+          format: email
+          maxLength: 35
+          example: "student1@example.com"
+        role:
+          type: string
+          enum: [ADMIN, TEACHER, STUDENT]
+          example: "STUDENT"
+
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: "student1"
+        email:
+          type: string
+          example: "student1@example.com"
+        role:
+          type: string
+          example: "STUDENT"
+        flashcards:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse_FlashcardResponse'
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse_EntryResponse'
+
+    UserResponse_FlashcardResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        frontText:
+          type: string
+          example: "你好"
+        backText:
+          type: string
+          example: "Hello"
+
+    UserResponse_EntryResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        courseId:
+          type: integer
+          example: 1
+        courseHeader:
+          type: string
+          example: "Basic Chinese"
