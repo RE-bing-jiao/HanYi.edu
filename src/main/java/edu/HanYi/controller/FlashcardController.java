@@ -2,6 +2,7 @@ package edu.HanYi.controller;
 
 import edu.HanYi.dto.request.FlashcardCreateRequest;
 import edu.HanYi.dto.response.FlashcardResponse;
+import edu.HanYi.exception.ResourceNotFoundException;
 import edu.HanYi.service.FlashcardService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,6 @@ import java.util.List;
 @RequestMapping("/api/flashcards")
 @RequiredArgsConstructor
 public class FlashcardController {
-
     private final FlashcardService flashcardService;
 
     @PostMapping
@@ -50,5 +50,11 @@ public class FlashcardController {
     public ResponseEntity<Void> deleteFlashcard(@PathVariable Integer id) {
         flashcardService.deleteFlashcard(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleResourceNotFound(ResourceNotFoundException ex) {
+        return ex.getMessage();
     }
 }

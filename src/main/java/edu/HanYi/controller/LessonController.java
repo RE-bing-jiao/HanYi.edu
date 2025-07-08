@@ -2,6 +2,7 @@ package edu.HanYi.controller;
 
 import edu.HanYi.dto.request.LessonCreateRequest;
 import edu.HanYi.dto.response.LessonResponse;
+import edu.HanYi.exception.ResourceNotFoundException;
 import edu.HanYi.service.LessonService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,6 @@ import java.util.List;
 @RequestMapping("/api/lessons")
 @RequiredArgsConstructor
 public class LessonController {
-
     private final LessonService lessonService;
 
     @PostMapping
@@ -50,5 +50,11 @@ public class LessonController {
     public ResponseEntity<Void> deleteLesson(@PathVariable Integer id) {
         lessonService.deleteLesson(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleResourceNotFound(ResourceNotFoundException ex) {
+        return ex.getMessage();
     }
 }

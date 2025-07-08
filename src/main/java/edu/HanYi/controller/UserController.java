@@ -2,6 +2,7 @@ package edu.HanYi.controller;
 
 import edu.HanYi.dto.request.UserCreateRequest;
 import edu.HanYi.dto.response.UserResponse;
+import edu.HanYi.exception.ResourceNotFoundException;
 import edu.HanYi.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,6 @@ import java.util.List;
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
-
     private final UserService userService;
 
     @PostMapping
@@ -45,5 +45,11 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleResourceNotFound(ResourceNotFoundException ex) {
+        return ex.getMessage();
     }
 }

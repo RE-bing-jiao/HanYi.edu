@@ -2,6 +2,7 @@ package edu.HanYi.controller;
 
 import edu.HanYi.dto.request.EntryCreateRequest;
 import edu.HanYi.dto.response.EntryResponse;
+import edu.HanYi.exception.ResourceNotFoundException;
 import edu.HanYi.service.EntryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,6 @@ import java.util.List;
 @RequestMapping("/api/entries")
 @RequiredArgsConstructor
 public class EntryController {
-
     private final EntryService entryService;
 
     @PostMapping
@@ -48,5 +48,11 @@ public class EntryController {
     public ResponseEntity<Void> deleteEntry(@PathVariable Integer id) {
         entryService.deleteEntry(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleResourceNotFound(ResourceNotFoundException ex) {
+        return ex.getMessage();
     }
 }
