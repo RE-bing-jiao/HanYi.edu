@@ -21,10 +21,10 @@ insert into courses (header,
                      entry_date,
                      exit_date,
                      progress) values
-                                   ('Basic Chinese', 'Introduction to Mandarin Chinese', 1, '2027-09-01 00:00:00', '2027-12-31 23:59:59', 25.50),
-                                   ('Daily Conversation', 'Common phrases for daily life', 2, '2027-09-01 00:00:00', '2027-02-28 23:59:59', 10.00),
-                                   ('Business Chinese', 'Chinese for business communication', 3, '2027-10-01 00:00:00', '2027-03-31 23:59:59', 0.00),
-                                   ('HSK 1 Preparation', 'HSK 1 考试准备课程', 4, '2027-09-15 00:00:00', '2027-12-15 23:59:59', 5.00);
+                                   ('Basic Chinese', 'Introduction to Mandarin Chinese', 1, '2027-09-01 00:00:00', '2028-12-31 23:59:59', 25.50),
+                                   ('Daily Conversation', 'Common phrases for daily life', 2, '2027-09-01 00:00:00', '2028-02-28 23:59:59', 10.00),
+                                   ('Business Chinese', 'Chinese for business communication', 3, '2027-10-01 00:00:00', '2028-03-31 23:59:59', 0.00),
+                                   ('HSK 1 Preparation', 'HSK 1 考试准备课程', 4, '2027-09-15 00:00:00', '2028-12-15 23:59:59', 5.00);
 
 insert into lessons (lesson_order_num,
                      header,

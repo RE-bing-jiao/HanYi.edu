@@ -3,8 +3,7 @@ create type user_role as enum ('ADMIN', 'TEACHER', 'STUDENT');
 create table if not exists categories (
                             id serial primary key,
                             name varchar(25) not null unique,
-                            description text not null,
-                            created_at timestamp with time zone default current_timestamp
+                            description text not null
 );
 
 create table if not exists users (
@@ -12,8 +11,7 @@ create table if not exists users (
                        username varchar(25) not null unique,
                        password varchar(255) not null,
                        email varchar(35) not null unique,
-                       role user_role not null,
-                       created_at timestamp with time zone default current_timestamp
+                       role user_role not null
 );
 
 create table if not exists courses (
@@ -24,7 +22,6 @@ create table if not exists courses (
                          entry_date timestamp with time zone not null,
                          exit_date timestamp with time zone not null,
                          progress decimal(5,2) default 0.00,
-                         created_at timestamp with time zone default current_timestamp,
                          constraint valid_progress check (progress >= 0 and progress <= 100),
                          constraint valid_dates check (entry_date <= exit_date)
 );
@@ -36,7 +33,6 @@ create table if not exists lessons (
                          description text not null,
                          url text not null,
                          course_id integer not null references courses(id) on delete cascade,
-                         created_at timestamp with time zone default current_timestamp,
                          constraint unique_lesson_order unique (course_id, lesson_order_num)
 );
 
@@ -45,7 +41,6 @@ create table if not exists entries (
                          user_id integer not null references users(id) on delete cascade,
                          course_id integer not null references courses(id) on delete cascade,
                          entry_date timestamp with time zone not null,
-                         created_at timestamp with time zone default current_timestamp,
                          constraint unique_user_course unique (user_id, course_id)
 );
 
