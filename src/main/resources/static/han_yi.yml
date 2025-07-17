@@ -46,6 +46,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Field 'name' must not be blank", "Field 'description' must not exceed 125 characters"]
+              example:
+                error: "Validation failed"
+                details: ["Field 'name' must not be blank"]
 
   /api/categories/{id}:
     get:
@@ -66,6 +84,14 @@ paths:
                 $ref: '#/components/schemas/CategoryResponse'
         '404':
           description: Category not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Category not found with ID: 10000"
     put:
       tags: [Categories]
       summary: Update a category
@@ -88,6 +114,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Field 'name' must be unique", "Field 'name' must not be blank"]
+        '404':
+          description: Category not found
+          content:
+            application/json:
+               example:
+                error: "Category not found with ID: 10000"
     delete:
       tags: [Categories]
       summary: Delete a category
@@ -102,6 +149,10 @@ paths:
           description: Category deleted successfully
         '404':
           description: Category not found
+          content:
+            application/json:
+              example:
+                error: "Category not found with ID: 10000"
 
   /api/courses:
     get:
@@ -132,6 +183,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Field 'header' must not be blank", "Field 'entryDate' must be in the future or present"]
+              example:
+                error: "Validation failed"
+                details: ["Field 'header' must not be blank"]
 
   /api/courses/{id}:
     get:
@@ -150,6 +219,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CourseResponse'
+        '404':
+          description: Course not found
+          content:
+            application/json:
+              example:
+                error: "Course not found with ID: 10000"
     put:
       tags: [Courses]
       summary: Update a course
@@ -172,6 +247,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              example:
+                error: "Validation failed"
+                details: ["Field 'progress' must be between 0.00 and 100.00"]
+        '404':
+          description: Course not found
+          content:
+            application/json:
+              example:
+                error: "Course not found with ID: 10000"
     delete:
       tags: [Courses]
       summary: Delete a course
@@ -184,6 +272,12 @@ paths:
       responses:
         '204':
           description: Course deleted successfully
+        '404':
+          description: Course not found
+          content:
+            application/json:
+              example:
+                error: "Course not found with ID: 10000"
 
   /api/courses/category/{categoryId}:
     get:
@@ -204,6 +298,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CourseResponse'
+        '404':
+          description: Category not found
+          content:
+            application/json:
+              example:
+                error: "Category not found with ID: 10000"
 
   /api/lessons:
     get:
@@ -234,6 +334,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LessonResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Field 'header' must not be blank"]
+              example:
+                error: "Validation failed"
+                details: ["Field 'lessonOrderNum' must not be null"]
 
   /api/lessons/{id}:
     get:
@@ -252,6 +370,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LessonResponse'
+        '404':
+          description: Lesson not found
+          content:
+            application/json:
+              example:
+                error: "Lesson not found with ID: 10000"
     put:
       tags: [Lessons]
       summary: Update a lesson
@@ -274,6 +398,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LessonResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              example:
+                error: "Validation failed"
+                details: ["Field 'description' must not exceed 125 characters"]
+        '404':
+          description: Lesson not found
+          content:
+            application/json:
+              example:
+                error: "Lesson not found with ID: 10000"
     delete:
       tags: [Lessons]
       summary: Delete a lesson
@@ -286,6 +423,12 @@ paths:
       responses:
         '204':
           description: Lesson deleted successfully
+        '404':
+          description: Lesson not found
+          content:
+            application/json:
+              example:
+                error: "Lesson not found with ID: 10000"
 
   /api/lessons/course/{courseId}:
     get:
@@ -306,6 +449,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/LessonResponse'
+        '404':
+          description: Course not found
+          content:
+            application/json:
+              example:
+                error: "Course not found with ID: 10000"
 
   /api/entries:
     get:
@@ -336,6 +485,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EntryResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Field 'user_id' must not be null", "Field 'entryDate' must be in the future or present"]
+              example:
+                error: "Validation failed"
+                details: ["Field 'entryDate' must not be in the past"]
 
   /api/entries/{id}:
     get:
@@ -354,6 +521,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EntryResponse'
+        '404':
+          description: Entry not found
+          content:
+            application/json:
+              example:
+                error: "Entry not found with ID: 10000"
+
     delete:
       tags: [Entries]
       summary: Delete an entry
@@ -366,6 +540,12 @@ paths:
       responses:
         '204':
           description: Entry deleted successfully
+        '404':
+          description: Entry not found
+          content:
+            application/json:
+              example:
+                error: "Entry not found with ID: 10000"
 
   /api/entries/user/{userId}:
     get:
@@ -386,6 +566,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EntryResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              example:
+                error: "User not found with ID: 10000"
 
   /api/entries/course/{courseId}:
     get:
@@ -406,6 +592,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EntryResponse'
+        '404':
+          description: Course not found
+          content:
+            application/json:
+              example:
+                error: "Course not found with ID: 10000"
 
   /api/flashcards:
     get:
@@ -436,6 +628,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FlashcardResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              example:
+                error: "Validation failed"
+                details: ["Field 'frontText' must not be blank", "Field 'backText' must not exceed 35 characters"]
 
   /api/flashcards/{id}:
     get:
@@ -454,6 +653,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FlashcardResponse'
+        '404':
+          description: Flashcard not found
+          content:
+            application/json:
+              example:
+                error: "Flashcard not found with ID: 10000"
     put:
       tags: [Flashcards]
       summary: Update a flashcard
@@ -476,6 +681,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FlashcardResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              example:
+                error: "Validation failed"
+                details: ["Field 'backText' must not be blank"]
+        '404':
+          description: Flashcard not found
+          content:
+            application/json:
+              example:
+                error: "Flashcard not found with ID: 10000"
     delete:
       tags: [Flashcards]
       summary: Delete a flashcard
@@ -488,6 +706,12 @@ paths:
       responses:
         '204':
           description: Flashcard deleted successfully
+        '404':
+          description: Flashcard not found
+          content:
+            application/json:
+              example:
+                error: "Flashcard not found with ID: 10000"
 
   /api/flashcards/user/{userId}:
     get:
@@ -508,6 +732,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/FlashcardResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              example:
+                error: "User not found with ID: 10000"
 
   /api/users:
     get:
@@ -538,6 +768,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              example:
+                error: "Validation failed"
+                details: ["Field 'email' must be a valid email address",
+                          "Field 'username' must be between 5 and 25 characters"]
 
   /api/users/{id}:
     get:
@@ -556,6 +794,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              example:
+                error: "User not found with ID: 10000"
     put:
       tags: [Users]
       summary: Update a user
@@ -578,6 +822,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad Request - Invalid Input
+          content:
+            application/json:
+              example:
+                error: "Validation failed"
+                details: ["Field 'email' must be unique", "Field 'role' must not be null"]
+        '404':
+          description: User not found
+          content:
+            application/json:
+              example:
+                error: "User not found with ID: 10000"
     delete:
       tags: [Users]
       summary: Delete a user
@@ -590,6 +847,12 @@ paths:
       responses:
         '204':
           description: User deleted successfully
+        '404':
+          description: User not found
+          content:
+            application/json:
+              example:
+                error: "User not found with ID: 10000"
 
 components:
   schemas:
@@ -658,7 +921,7 @@ components:
           example: "2027-06-01T00:00:00Z"
         progress:
           type: number
-          format: double
+          format: decimal
           minimum: 0
           maximum: 100
           example: 0.0
@@ -691,7 +954,7 @@ components:
           example: "2027-06-01T00:00:00Z"
         progress:
           type: number
-          format: double
+          format: decimal
           example: 0.0
         lessons:
           type: array
@@ -871,7 +1134,7 @@ components:
           type: string
           format: email
           maxLength: 35
-          example: "student1@example.com"
+          example: "student1@example.ru"
         role:
           type: string
           enum: [ADMIN, TEACHER, STUDENT]
@@ -888,7 +1151,7 @@ components:
           example: "student1"
         email:
           type: string
-          example: "student1@example.com"
+          example: "student1@example.ru"
         role:
           type: string
           example: "STUDENT"
