@@ -2,6 +2,7 @@ package edu.HanYi.controller;
 
 import edu.HanYi.dto.request.LessonCreateRequest;
 import edu.HanYi.dto.response.LessonResponse;
+import edu.HanYi.exception.GlobalExceptionHandler;
 import edu.HanYi.service.LessonService;
 import edu.HanYi.exception.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,7 +36,10 @@ class LessonControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(lessonController).build();
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(lessonController)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
     }
 
     @Test
@@ -172,6 +176,34 @@ class LessonControllerTest {
                 .when(lessonService).deleteLesson(100);
 
         mockMvc.perform(delete("/api/lessons/100"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void getLessonsByCourseId_ValidRequest_ReturnsFound() throws Exception {
+        List<LessonResponse> expectedResponse = List.of(
+                new LessonResponse(
+                        1,
+                        1,
+                        "Title",
+                        "Desc",
+                        "url",
+                        1,
+                        "Course"));
+
+        when(lessonService.getLessonsByCourseId(1)).thenReturn(expectedResponse);
+
+        mockMvc.perform(get("/api/lessons/course/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(1))
+                .andExpect(jsonPath("$[0].header").value("Title"));
+    }
+
+    @Test
+    void getLessonsByCourseId_NotFound_Returns404() throws Exception {
+        when(lessonService.getLessonsByCourseId(10000)).thenThrow(new ResourceNotFoundException("Course not found"));
+
+        mockMvc.perform(get("/api/lessons/course/10000"))
                 .andExpect(status().isNotFound());
     }
 }

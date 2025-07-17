@@ -3,6 +3,7 @@ package edu.HanYi.controller;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import edu.HanYi.dto.request.UserCreateRequest;
 import edu.HanYi.dto.response.UserResponse;
+import edu.HanYi.exception.GlobalExceptionHandler;
 import edu.HanYi.model.User;
 import edu.HanYi.service.UserService;
 import edu.HanYi.exception.ResourceNotFoundException;
@@ -38,7 +39,10 @@ class UserControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(userController)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
     }
 
     @Test

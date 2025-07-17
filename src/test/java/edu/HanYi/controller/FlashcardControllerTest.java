@@ -3,6 +3,7 @@ package edu.HanYi.controller;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import edu.HanYi.dto.request.FlashcardCreateRequest;
 import edu.HanYi.dto.response.FlashcardResponse;
+import edu.HanYi.exception.GlobalExceptionHandler;
 import edu.HanYi.service.FlashcardService;
 import edu.HanYi.exception.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,7 +38,10 @@ class FlashcardControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(flashcardController).build();
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(flashcardController)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
     }
 
     @Test
@@ -160,6 +164,34 @@ class FlashcardControllerTest {
                 .when(flashcardService).deleteFlashcard(100);
 
         mockMvc.perform(delete("/api/flashcards/100"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void getFlashcardsByUserId_ValidRequest_ReturnsFound() throws Exception {
+        List<FlashcardResponse> expectedResponse = List.of(
+                new FlashcardResponse(
+                        1,
+                        1,
+                        "user",
+                        "你好",
+                        "Hello",
+                        LocalDateTime.now().plusDays(1))
+        );
+
+        when(flashcardService.getFlashcardsByUserId(1)).thenReturn(expectedResponse);
+
+        mockMvc.perform(get("/api/flashcards/user/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(1))
+                .andExpect(jsonPath("$[0].username").value("user"));
+    }
+
+    @Test
+    void getFlashcardsByUserId_NotFound_Returns404() throws Exception {
+        when(flashcardService.getFlashcardsByUserId(10000)).thenThrow(new ResourceNotFoundException("User not found"));
+
+        mockMvc.perform(get("/api/flashcards/user/10000"))
                 .andExpect(status().isNotFound());
     }
 }

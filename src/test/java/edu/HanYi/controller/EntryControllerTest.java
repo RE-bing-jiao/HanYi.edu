@@ -2,8 +2,8 @@ package edu.HanYi.controller;
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import edu.HanYi.dto.request.EntryCreateRequest;
-import edu.HanYi.dto.response.CategoryResponse;
 import edu.HanYi.dto.response.EntryResponse;
+import edu.HanYi.exception.GlobalExceptionHandler;
 import edu.HanYi.service.EntryService;
 import edu.HanYi.exception.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,7 +39,10 @@ class EntryControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(entryController).build();
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(entryController)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
     }
 
     @Test
@@ -74,7 +77,7 @@ class EntryControllerTest {
     }
 
     @Test
-    void getAllCategories() throws Exception {
+    void getAllEntries() throws Exception {
         List<EntryResponse> expectedResponse = Arrays.asList(
                 new EntryResponse(
                         1,
@@ -139,6 +142,60 @@ class EntryControllerTest {
         doThrow(new ResourceNotFoundException("Not found")).when(entryService).deleteEntry(100);
 
         mockMvc.perform(delete("/api/entries/100"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void getEntriesByUserId_ValidRequest_ReturnsFound() throws Exception {
+        List<EntryResponse> expectedResponse = List.of(
+                new EntryResponse(
+                        1,
+                        1,
+                        "user",
+                        1,
+                        "course",
+                        LocalDateTime.now().plusDays(1)));
+
+        when(entryService.getEntriesByUserId(1)).thenReturn(expectedResponse);
+
+        mockMvc.perform(get("/api/entries/user/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(1))
+                .andExpect(jsonPath("$[0].username").value("user"));
+    }
+
+    @Test
+    void getEntriesByUserId_NotFound_Returns404() throws Exception {
+        when(entryService.getEntriesByUserId(10000)).thenThrow(new ResourceNotFoundException("User not found"));
+
+        mockMvc.perform(get("/api/entries/user/10000"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void getEntriesByCourseId_ValidRequest_ReturnsFound() throws Exception {
+        List<EntryResponse> expectedResponse = List.of(
+                new EntryResponse(
+                        1,
+                        1,
+                        "user",
+                        1,
+                        "course",
+                        LocalDateTime.now().plusDays(1)));
+
+        when(entryService.getEntriesByCourseId(1)).thenReturn(expectedResponse);
+
+        mockMvc.perform(get("/api/entries/course/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(1))
+                .andExpect(jsonPath("$[0].username").value("user"));
+    }
+
+    @Test
+    void getEntriesByCourseId_NotFound_Returns404() throws Exception {
+        when(entryService.getEntriesByCourseId(10000)).thenThrow(new ResourceNotFoundException("Course not found"));
+
+        mockMvc.perform(get("/api/entries/course/10000"))
                 .andExpect(status().isNotFound());
     }
 }
