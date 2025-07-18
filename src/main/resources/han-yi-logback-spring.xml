@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="NAME" value="HanYi"/>
+    <property name="LOG_DIR" value="./logs/han-yi-logs"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [HAN_YI] %-5level %logger{36} - %msg%n"/>
+    <timestamp key="LOG_FILE_TIMESTAMP" datePattern="yyyy-MM-dd_HH-mm-ss"/>
+
+    <appender name="HAN_YI_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_DIR}/${NAME}-${LOG_FILE_TIMESTAMP}.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="HAN_YI_FILTERED" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>TO_CONSOLE</marker>
+            </evaluator>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="edu.HanYi" level="DEBUG" additivity="false">
+        <appender-ref ref="HAN_YI_FILE"/>
+        <appender-ref ref="HAN_YI_FILTERED"/>
+    </logger>
+
+    <logger name="org.springframework" level="OFF"/>
+    <logger name="org.hibernate" level="OFF"/>
+    <root level="ERROR">
+        <appender-ref ref="HAN_YI_FILE"/>
+        <appender-ref ref="HAN_YI_FILTERED"/>
+    </root>
+</configuration>
