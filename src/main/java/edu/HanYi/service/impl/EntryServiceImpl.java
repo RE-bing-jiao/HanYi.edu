@@ -52,13 +52,11 @@ public class EntryServiceImpl implements EntryService {
                     return new ResourceNotFoundException("Course not found with id: " + request.courseId());
                 });
 
-        log.debug("Creating new entry for user: {} and course: {}",
-                user.getUsername(), course.getHeader());
-        Entry entry = Entry.builder()
-                .user(user)
-                .course(course)
-                .entryDate(request.entryDate())
-                .build();
+        log.debug("Creating new entry for user: {} and course: {}", user.getUsername(), course.getHeader());
+        Entry entry = new Entry();
+        entry.setCourse(course);
+        entry.setUser(user);
+        entry.setEntryDate(request.entryDate());
 
         Entry savedEntry = entryRepository.save(entry);
         log.info(TO_CONSOLE, "Created entry ID: {} for user ID: {} and course ID: {}",
