@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -115,6 +117,15 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.deleteById(id);
         log.info(TO_CONSOLE, "Deleted user ID: {}", id);
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService(){
+        return username ->{
+            User user = userRepository.findByEmail(username)
+                    .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+            return user;
+        };
     }
 
     private UserResponse mapToResponse(User user) {

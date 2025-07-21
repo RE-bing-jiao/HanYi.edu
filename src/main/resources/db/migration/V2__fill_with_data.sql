@@ -13,7 +13,7 @@ insert into users (username,
                              ('admin', 'p@ssw0rdD1234', 'admin@chinese.com', 'ADMIN'),
                              ('teacher1', 'p@ssw0rdD1234', 'teacher1@chinese.com', 'TEACHER'),
                              ('student1', 'p@ssw0rdD1234', 'student1@chinese.com', 'STUDENT'),
-                             ('eva_li', 'p@ssw0rdD1234', 'evali@mail.com', 'STUDENT');
+                             ('eva_li', '$2a$12$uUuB.xsFHH2ERZ4pJ2xineggCttxECX3fCPA4szXTz3TwOe1HaT1m', 'evali@mail.com', 'STUDENT');
 
 insert into courses (header,
                      description,

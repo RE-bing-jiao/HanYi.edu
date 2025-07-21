@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+<h1>Login</h1>
+
+<!-- Сообщение об ошибке -->
+<div th:if="${param.error}" class="error">
+    Invalid username or password
+</div>
+
+<!-- Форма входа -->
+<form action="/perform_login" method="post">
+    <div>
+        <label>Username:</label>
+        <input type="text" name="username" required>
+    </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+    </div>
+    <button type="submit">Login</button>
+</form>
+
+<p>Don't have an account? <a href="/register">Register</a></p>
+</body>
+</html>

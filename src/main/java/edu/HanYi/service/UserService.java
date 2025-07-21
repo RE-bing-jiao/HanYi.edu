@@ -2,6 +2,8 @@ package edu.HanYi.service;
 
 import edu.HanYi.dto.request.UserCreateRequest;
 import edu.HanYi.dto.response.UserResponse;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
@@ -11,4 +13,5 @@ public interface UserService {
     UserResponse getUserById(Integer id);
     UserResponse updateUser(Integer id, UserCreateRequest request);
     void deleteUser(Integer id);
+    UserDetailsService userDetailsService();
 }
