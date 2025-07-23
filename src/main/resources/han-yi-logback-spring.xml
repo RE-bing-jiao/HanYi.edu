@@ -2,7 +2,7 @@
 <configuration>
     <property name="NAME" value="HanYi"/>
     <property name="LOG_DIR" value="./logs/han-yi-logs"/>
-    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [HAN_YI] %-5level %logger{36} - %msg%n"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [HAN_YI] %-5level %logger{36} - %msg%n%rEx{0}"/>
     <timestamp key="LOG_FILE_TIMESTAMP" datePattern="yyyy-MM-dd_HH-mm-ss"/>
 
     <appender name="HAN_YI_FILE" class="ch.qos.logback.core.FileAppender">

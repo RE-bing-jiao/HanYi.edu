@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,12 @@ import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
 
+@Slf4j
 @Service
 public class JwtServiceImpl implements JwtService {
     //@Value("${jwt.signing.key}")
-    private String jwtSigningKey = Base64.getEncoder().encodeToString(Keys.secretKeyFor(SignatureAlgorithm.HS256).getEncoded());
-    private long jwtExpiration = 1000*60*24;
+    private final String jwtSigningKey =
+            Base64.getEncoder().encodeToString(Keys.secretKeyFor(SignatureAlgorithm.HS256).getEncoded());
 
     @Override
     public String extractUsername(String token) {
@@ -47,11 +49,12 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private String createToken(Map<String, Object> extraClaims, String subject) {
+        long jwtExpiration = 1000 * 60 * 24;
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+jwtExpiration))
+                .setExpiration(new Date(System.currentTimeMillis()+ jwtExpiration))
                 .signWith(getSigningKey(),SignatureAlgorithm.HS256)
                 .compact();
     }
