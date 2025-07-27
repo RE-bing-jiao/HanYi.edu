@@ -1,6 +1,7 @@
 package edu.HanYi.security.config;
 
 import edu.HanYi.security.JwtAuthenticationFilter;
+import jakarta.servlet.http.Cookie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -18,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled = true)
+@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -29,18 +31,34 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/users/").permitAll()
-                        .requestMatchers("/api/admin/**","/api/users/**").hasRole("ADMIN")
+                        .requestMatchers(
+                                "/",
+                                "/home",
+                                "/signin",
+                                "/signup",
+                                "/api/auth/**",
+                                "/css/**",
+                                "/js/**",
+                                "/images/**",
+                                "/static/**"
+                        ).permitAll()
+                        .requestMatchers("/api/users/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-                .exceptionHandling(ex -> ex
-                        .accessDeniedHandler((request, response, accessDeniedException) -> {
-                            System.out.println("Access Denied for: " + request.getRequestURI());
-                            response.sendError(403, "Access Denied");
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/home")
+                        .addLogoutHandler((request, response, auth) -> {
+                            SecurityContextHolder.clearContext();
+                            // Удаляем JWT cookie
+                            Cookie cookie = new Cookie("JWT", null);
+                            cookie.setPath("/");
+                            cookie.setMaxAge(0);
+                            response.addCookie(cookie);
                         })
+                        .permitAll()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 

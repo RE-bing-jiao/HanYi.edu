@@ -3,12 +3,12 @@ package edu.HanYi.security;
 import edu.HanYi.security.service.impl.JwtServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,50 +23,85 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
     private final UserDetailsService userDetailsService;
     private final JwtServiceImpl jwtService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+    protected void doFilterInternal(HttpServletRequest request,
+                                    @NonNull HttpServletResponse response,
+                                    @NonNull FilterChain chain)
             throws ServletException, IOException {
-        logger.info("Processing request to: {}", request.getRequestURI());
 
-        final String authHeader = request.getHeader("Authorization");
-
-        if(authHeader == null || !authHeader.startsWith("Bearer ")) {
-            logger.info("No JWT token found in Auth header");
+        if ("/logout".equals(request.getRequestURI())) {
             chain.doFilter(request, response);
             return;
         }
+        log.info("Processing request to: {}", request.getRequestURI());
 
-        try {
-            final String jwt = authHeader.substring(7);
-            logger.debug("Extracted JWT token: {}", jwt);
-            final String userEmail = jwtService.extractUsername(jwt);
-            logger.info("Extracted user email from token: {}", userEmail);
+        String jwt = getJwtFromHeader(request);
 
-            if(userEmail!= null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                logger.info("Loading user details for: {}", userEmail);
-                UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+        if (jwt == null) {
+            jwt = getJwtFromCookie(request);
+            log.debug("Extracted JWT from cookie: {}", jwt);
+        }
 
-                if(jwtService.isTokenValid(jwt, userDetails)){
-                    logger.info("Token is valid for user: {}, authorities: {}",
-                            userEmail, userDetails.getAuthorities());
+        if (jwt != null) {
+            try {
+                String userEmail = jwtService.extractUsername(jwt);
+                log.info("Extracted user email from token: {}", userEmail);
 
-                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                            userDetails, null, userDetails.getAuthorities());
-                    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
 
-                    SecurityContextHolder.getContext().setAuthentication(authToken);
-                    logger.info("Authenticated user: {}", userEmail);
-                } else {
-                    logger.warn("Invalid token for user: {}", userEmail);
+                    if (jwtService.isTokenValid(jwt, userDetails)) {
+                        log.info("Token is valid for user: {}, authorities: {}",
+                                userEmail, userDetails.getAuthorities());
+
+                        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                                userDetails, null, userDetails.getAuthorities());
+                        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+                        SecurityContextHolder.getContext().setAuthentication(authToken);
+                        log.info("Authenticated user: {}", userEmail);
+                    } else {
+                        log.warn("Invalid token for user: {}", userEmail);
+                    }
+                }
+            } catch (Exception e) {
+                SecurityContextHolder.clearContext();
+                clearJwtCookie(response);
+                log.error("Failed to process JWT authentication", e);
+            }
+        }
+
+        chain.doFilter(request, response);
+    }
+
+    private String getJwtFromHeader(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            return authHeader.substring(7);
+        }
+        return null;
+    }
+
+    private String getJwtFromCookie(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("JWT".equals(cookie.getName())) {
+                    return cookie.getValue();
                 }
             }
-        } catch (Exception e) {
-            logger.error("Failed to process JWT authentication", e);
         }
-        chain.doFilter(request, response);
+        return null;
+    }
+
+    private void clearJwtCookie(HttpServletResponse response) {
+        Cookie cookie = new Cookie("JWT", null);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
     }
 }

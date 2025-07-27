@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Han Yi Online School</title>
+	<meta name="description" content="Responsive HTML5 Template">
+	<meta name="author" content="webthemez">
+
+	<!-- Mobile Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" th:href="@{/css/animations.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/custom.css}">
+
+	<!-- Шрифт Comfortaa -->
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+	<body class="no-trans">
+		<!-- scrollToTop --> 
+		<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+
+		<!-- header start --> 
+		<header class="header fixed clearfix navbar navbar-fixed-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+
+						<!-- header-left start --> 
+						<div class="header-left">
+
+							<!-- logo -->
+							<div class="logo smooth-scroll">
+								<a href="#banner"><img id="logo" src="/images/logo.png" alt="han yi" style="width: 80px; height: auto"></a>
+							</div>
+
+							<!-- name-and-slogan -->
+							<div class="logo-section smooth-scroll">
+								<div class="brand"><a href="#banner">Han Yi</a></div>
+							</div>
+
+						</div>
+						<!-- header-left end -->
+
+					</div>
+					<div class="col-md-8">
+
+						<!-- header-right start --> 
+						<div class="header-right">
+
+							<!-- main-navigation start --> 
+							<div class="main-navigation animated">
+
+								<!-- navbar start --> 
+								<nav class="navbar navbar-default" role="navigation">
+									<div class="container-fluid">
+
+										<!-- Toggle get grouped for better mobile display -->
+										<div class="navbar-header">
+											<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+												<span class="sr-only">Toggle navigation</span>
+												<span class="icon-bar"></span>
+												<span class="icon-bar"></span>
+												<span class="icon-bar"></span>
+											</button>
+										</div>
+
+										<!-- Collect the nav links, forms, and other content for toggling -->
+										<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+											<ul class="nav navbar-nav navbar-right">
+												<li class="active"><a href="#banner">Главная</a></li>
+												<li><a href="#portfolio">Курсы</a></li>
+												<li><a href="#price">Прайс</a></li>
+												<li><a href="#contact">Контакты</a></li>
+												<li><a href="/signin">Войти</a></li>
+												<li th:if="${isAuthenticated}">
+													<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+													   class="nav-link">Выйти</a>
+													<form id="logout-form" action="/logout" method="post" style="display: none;">
+													</form>
+												</li>
+											</ul>
+										</div>
+
+									</div>
+								</nav>
+								<!-- navbar end -->
+
+							</div>
+							<!-- main-navigation end -->
+
+						</div>
+						<!-- header-right end -->
+
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- header end -->
+
+		<!-- banner start --> 
+		<div id="banner" class="banner">
+			<div class="banner-image" style="margin-top: 100px !important;"></div>
+			<div class="banner-caption">
+				<div class="container">
+					<div class="row">
+						<div class="caption-data" style="margin-top: -130px; opacity: 1;" data-animation-effect="fadeIn">
+								<h1>Погрузитесь в китайский</h1>
+								<h3 class="padding-top30">– от азов до совершенства с Han Yi!</h3>
+								<div class="padding-top60 contact-form">
+									<button class="btn cta-button" style="background-color: white; opacity: 80%; border: 1px solid #0f0f0f; transition: 0.3s;">
+										<a class="scrollspy smooth-scroll" href="#about" style="color: #0f0f0f !important; font-family: Comfortaa !important; text-decoration: none;">Подробнее</a>
+									</button>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- banner end -->
+		<section class="hero-caption secPadding">
+
+		<div class="container">
+	
+	<div class="row " style="margin-top: 0px;">
+				<div class="col-sm-12">
+	<h2>Добро пожаловать в <span>Онлайн</span> школу - <strong>Han Yi!</strong> </h2>
+					<p>Han Yi — это пространство, где обучение китайскому языку становится доступным и увлекательным. Начните свое путешествие в изучение китайского языка с нами — легко, комфортно и эффективно!</p>
+</div>
+	
+			</div>
+
+		</div>
+	
+</section>
+<!-- section start --> 
+		<section class="section transprant-bg pclear secPadding">
+			<div class="container no-view" data-animation-effect="fadeIn">
+				<h1 id="services" class="title text-center">Что мы предлагаем:</h1>
+				<div class="space"></div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="media block-list">
+							<div class="media-left">
+								<img src="/icons/lamp.png" alt="Custom Icon" class="custom-icon">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Онлайн-курсы</h3>
+								<blockquote style="color: #dcdcdc;">
+									<p>Погрузитесь в интерактивные курсы, разработанные экспертами. Наши уроки с носителями языка и современными методиками помогут вам быстро и уверенно освоить китайский.</p>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="media block-list">
+							<div class="media-left">
+								<img src="/icons/shu.png" alt="Custom Icon" class="custom-icon">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Онлайн-библиотека</h3>
+								<blockquote style="color: #dcdcdc;">
+									<p>Откройте для себя обширную коллекцию учебников, видео, аудио-материалов и практик – всё для глубокого погружения в мифологию и культуру Китая.</p>
+									
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="media block-list">
+							<div class="media-left">
+								<img src="/icons/calligraphy.png" alt="Custom Icon" class="custom-icon">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Готовые решения для практики</h3>
+								<blockquote style="color: #dcdcdc;">
+									<p>Используйте проверенные задания, упражения и шаблоны, чтобы закрепить знания и развить навыки общения – все материалы готовы к моментальному применению.</p>
+									
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="media block-list">
+							<div class="media-left">
+								<img src="/icons/qian.png" alt="Custom Icon" class="custom-icon">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Интернет-оплата</h3>
+								<blockquote style="color: #dcdcdc;">
+									<p>Оформляйте обучение одним кликом с помощью безопасных и удобных платёжных систем – без бумажной волокиты и скрытых комиссий.</p>
+									
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="media block-list">
+							<div class="media-left">
+								<img src="/icons/xiazai.png" alt="Custom Icon" class="custom-icon">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Скачивание материалов</h3>
+								<blockquote style="color: #dcdcdc;">
+									<p>Скачивайте уроки и дополнительные материалы в удобном формате, чтобы учиться в своем ритме – офлайн или онлайн.</p>
+									
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="media block-list">
+							<div class="media-left">
+								<img src="/icons/long.png" alt="Custom Icon" class="custom-icon">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Сертификация</h3>
+								<blockquote style="color: #dcdcdc;">
+									<p>Получайте официальные сертификаты, подтверждающие ваш уровень владения китайским, которые станут вашим пропуском к новым карьерным и образовательным возможностям.</p>
+									
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>			  
+		</section>
+		<!-- section end -->
+
+		<!-- section start --> 
+		<section class="section clearfix no-view secPadding" data-animation-effect="fadeIn">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 id="about" class="title text-center">Школа Han Yi<span>(汉易)</span></h1>
+						<p class="lead text-center">— лидер в онлайн обучении китайскому языку</p>
+						<div class="space"></div>
+						<div class="row">
+							<div class="col-md-6">
+								<img src="/images/section-image-1.png" alt="">
+								<div class="space"></div>
+							</div>
+							<div class="col-md-6" style="font-size: 20px;">
+								<p><mark>Han Yi (汉易)</mark> — современная онлайн школа китайского языка, предлагающая интерактивные программы для студентов любого уровня. Мы обеспечиваем индивидуальный подход, подготовку к экзаменам HSK и HSKK, разговорные клубы и гибкий график занятий, чтобы обучение было удобным и продуктивным.</p>
+							</div>
+						</div>
+						<div class="space"></div>
+						<h2>Одна из <strong>ЛУЧШИХ</strong> школ Беларуси:</h2>
+						<div class="row">
+							<div class="col-md-6">
+								<p>В нашей школе вы найдете:</p>
+								<ul class="list-unstyled">
+									<li>
+										<img src="/images/icon1.png" alt="icon" class="icon"> Индивидуальный подход к каждому студенту
+									</li>
+									<li>
+										<img src="/images/icon1.png" alt="icon" class="icon"> Опытные преподаватели с международной сертификацией
+									</li>
+									<li>
+										<img src="/images/icon1.png" alt="icon" class="icon"> Эффективные и интерактивные методы обучения
+									</li>
+									<li>
+										<img src="/images/icon1.png" alt="icon" class="icon"> Гибкий график занятий, подходящий для вашего расписания
+									</li>
+									<li>
+										<img src="/images/icon1.png" alt="icon" class="icon"> Подготовка к экзаменам HSK и HSKK всех уровней
+									</li>
+								</ul>
+								<p>Наша цель — сделать изучение китайского языка доступным, удобным и увлекательным. Присоединяйтесь к сообществу Han Yi и начните свой путь к успеху уже сегодня!</p>
+							</div>
+							<div class="col-md-6">
+								<img src="/images/section_img2.png" alt="" style="margin-top: -40px !important;">
+								<div class="space"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- section end -->
+ 
+		<!-- section start --> 
+		<div class="dragon-bg secPadding" style="background-image: url('/images/divider.png'); background-size: 1905px 450px;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2" style="color: #909090;">
+						<h1 class="text-center" style="color: white;">История о нашем маскоте</h1>
+						<p class="text-center"><i>«…Жил-был дракон по имени Янь Ли (炎力), покровитель онлайн-школы Han Yi (汉易). Обитая высоко в облаках, он берег древние знания китайского языка и следил за успехами учеников.
+							ЯньЛи был справедлив, но требователен. Когда кто-то пренебрегал занятиями или недостаточно старался, дракон тихо спускался со своих высот и назначал дополнительные задания по изучению сложных иероглифов. Таким образом, уроки, преподанные ЯньЛи, служили напоминанием, что только упорство и дисциплина ведут к настоящему мастерству.
+							А те, кто принимал вызов, чувствовали его благословение и становились сильнее не только в изучении языка, но и в достижении жизненных целей…»</i>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- section end -->
+
+		<!-- section start --> 
+		<section class="section secPadding">
+			<div class="container">
+				<h1 class="text-center title" id="portfolio">Программы</h1>
+				<div class="separator"></div>
+				<p class="lead text-center">Персонализированные программы обучения для эффективного изучения китайского языка.<br> Подберите курс, который идеально подходит вам!</p>
+				<br>			
+				<div class="row no-view" data-animation-effect="fadeIn">
+					<div class="col-md-12">
+
+						<!-- isotope filters start -->
+						<div class="filters text-center">
+							<ul class="nav nav-pills">
+								<li class="active"><a href="#" data-filter="*">Все</a></li>
+								<li><a href="#" data-filter=".web-design">Основные курсы</a></li>
+								<li><a href="#" data-filter=".mobile-apps">Ускоренные программы</a></li>
+								<li><a href="#" data-filter=".app-development">Прочее</a></li>
+							</ul>
+						</div>
+						<!-- isotope filters end -->
+
+						<!-- portfolio items start -->
+						<div class="isotope-container row grid-space-20">
+							<div class="col-sm-6 col-md-3 isotope-item web-design">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk1.jpg" alt="">
+										<a class="overlay" data-toggle="modal" data-target="#project-1" style="background-color: #072D3D; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+											 
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-1" style="background-color: #2D93AD; color: #fff;">HSK 1</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-1" tabindex="-1" role="dialog" aria-labelledby="project-1-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-1-label">HSK 1</h4>
+											</div>
+											<div class="modal-body">
+												
+												<div class="row">												 
+													<div class="col-md-12">
+														<img src="/images/hsk1.jpg" alt="">
+														<br/>
+														<h3>HSK 1, <mark>[Пакет «Крошка Бао»]</mark></h3>
+														<p>Этот курс предназначен для новичков, которые только начинают изучать китайский язык. Вы познакомитесь с базовыми словами и фразами, освоите основы грамматики и начнёте понимать самые простые тексты и диалоги. Курс также включает введение в китайские иероглифы</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+							<div class="col-sm-6 col-md-3 isotope-item web-design">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk2.jpg" alt="">
+										<a class="overlay" data-toggle="modal" data-target="#project-2" style="background-color: #072D3D; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-2" style="background-color: #2D93AD; color: #fff;">HSK 2</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-2" tabindex="-1" role="dialog" aria-labelledby="project-2-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-2-label">HSK 2</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img src="/images/hsk2.jpg" alt="">
+														<br/>
+														<h3>HSK 2, <mark>[Пакет «Крошка Бао»]</mark></h3>
+														<p>Курс для тех, кто хочет продолжить обучение после HSK 1. Вы расширите словарный запас, научитесь строить более сложные предложения и поддерживать общение в бытовых ситуациях. Программа направлена на углубление знаний и практическое использование языка!</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+
+							<div class="col-sm-6 col-md-3 isotope-item web-design">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk3.jpg" alt="">
+										<a class="overlay" data-toggle="modal" data-target="#project-3" style="background-color: #072D3D; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-3" style="background-color: #2D93AD; color: #fff;">HSK 3</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-3" tabindex="-1" role="dialog" aria-labelledby="project-3-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-3-label">HSK 3</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img src="/images/hsk3.jpg" alt="">
+														<br/>
+														<h3>HSK 3, <mark>[Пакет «Булочка Бао»]</mark></h3>
+														<p>Этот уровень позволяет перейти к изучению китайского языка на среднем уровне. Вы освоите сложные грамматические конструкции, научитесь общаться в путешествиях и разговаривать о своих интересах. Курс также поможет вам научиться уверенно читать короткие тексты</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+							<div class="col-sm-6 col-md-3 isotope-item web-design">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk4.png" alt="">
+										<a class="overlay" data-toggle="modal" data-target="#project-4" style="background-color: #072D3D; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-4" style="background-color: #2D93AD; color: #fff;">HSK 4</a>
+								</div>
+
+								<!-- Modal -->
+
+								<div class="modal fade" id="project-4" tabindex="-1" role="dialog" aria-labelledby="project-4-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-4-label">HSK 4</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img src="/images//hsk4.png" alt="" class="MYimage-box">
+														<br/>
+														<h3>HSK 4, <mark>[Пакет «Каравай Бао»]</mark></h3>
+														<p>Программа для тех, кто хочет развить навыки устной и письменной речи. Курс включает изучение языка на профессиональном уровне, чтение сложных текстов и обучение общению в формальных и рабочих ситуациях</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+
+							<div class="col-sm-6 col-md-3 isotope-item web-design">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk5.jpg" alt="">
+										<a class="overlay" data-toggle="modal" data-target="#project-6" style="background-color: #072D3D; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-6" style="background-color: #2D93AD; color: #fff;">HSK 5</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-6" tabindex="-1" role="dialog" aria-labelledby="project-6-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-6-label">HSK 5</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img src="/images/hsk5.jpg" alt="">
+														<br/>
+														<h3>HSK 5, <mark>[Пакет «Торт Бао»]</mark></h3>
+														<p>Этот курс поможет вам укрепить ваши знания китайского языка и подготовиться к успешной сдаче HSK 5. Вы изучите сложную лексику, продвинутую грамматику и отработаете навыки чтения, письма, говорения и аудирования. Программа направлена на свободное владение языком для профессиональных и образовательных целей.</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+
+							</div>
+							<div class="col-sm-6 col-md-3 isotope-item web-design">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk6.png" alt="">
+										<a class="overlay" data-toggle="modal" data-target="#project-5" style="background-color: #072D3D; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-5" style="background-color: #2D93AD; color: #fff;">HSK 6</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-5" tabindex="-1" role="dialog" aria-labelledby="project-5-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-5-label">HSK 6</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img src="/images/hsk6.png" alt="">
+														<br/>
+														<h3>HSK 6, <mark>[Пакет «Торт Бао»]</mark></h3>
+														<p>Добро пожаловать на самый высокий уровень подготовки HSK! Курс рассчитан на тех, кто хочет достичь полного понимания китайского языка. Вы овладеете богатой лексикой, научитесь читать сложные тексты и уверенно вести обсуждения на разные темы, от культуры до бизнеса. Программа поможет вам стать экспертом в языке!</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+							<div class="col-sm-6 col-md-3 isotope-item app-development">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/speaking_club.png" alt="">
+										<a class="overlay" data-toggle="modal" data-target="#project-7">
+											<i class="fa fa-search-plus"></i>
+
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-7">Разговорный клуб</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-7" tabindex="-1" role="dialog" aria-labelledby="project-7-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-7-label">Разговорный клуб</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img class = "MYimage-box" src="/images/speaking_club.png" alt="">
+														<br/>
+														<h3>Разговорный клуб, <mark>[Пакет «Крошка Бао»]</mark></h3>
+														<p>Разговорный клуб – это отличная возможность погрузиться в языковую среду и улучшить свои навыки общения! Участники клуба учатся вести беседы на китайском, обсуждать актуальные темы и культурные аспекты, развивая беглость речи и уверенность в общении. :)</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+
+							<div class="col-sm-6 col-md-3 isotope-item app-development">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hskk.png" alt="" style="height: 173px !important;">
+										<a class="overlay" data-toggle="modal" data-target="#project-8">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-8">Подготовка к HSKK</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-8" tabindex="-1" role="dialog" aria-labelledby="project-8-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-8-label">Подготовка к HSKK</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img src="/images/hskk.png" alt="" class="MYimage-box">
+														<br/>
+														<h3>HSKK, <mark>[Пакет «Каравай Бао»]</mark></h3>
+														<p>Курс специально разработан для тех, кто хочет успешно пройти экзамен HSKK (устный экзамен). В программе акцент на тренировке произношения, восприятии на слух, развитии навыков речи и подготовке к различным уровням экзамена</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+
+							<div class="col-sm-6 col-md-3 isotope-item mobile-apps">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk1Express.png" alt="" style="width: 750px !important; height: 174px !important;">
+										<a class="overlay" data-toggle="modal" data-target="#project-10" style="background-color: #3D0707; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-10" style="background-color: #D62246; color: #fff;">HSK 1 EXPRESS</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-10" tabindex="-1" role="dialog" aria-labelledby="project-10-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-10-label" >HSK 1 EXPRESS</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img src="/images/hsk1Express.png" alt="" class="MYimage-box">
+														<br/>
+														<h3>HSK 1 EXPRESS, <mark>[Пакет «Булочка Бао»]</mark></h3>
+														<p>Эти курсы созданы для быстрого изучения китайского языка, основываясь на программе HSK начальных уровней. HSK 1 EXPRESS - это интенсивное освоение основ языка для начинающих. Идеально для тех, кто хочет быстро заговорить на базовом китайском</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+							<div class="col-sm-6 col-md-3 isotope-item mobile-apps">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk2Express.png" alt="" style="width: 750px !important; height: 174px !important;">
+										<a class="overlay" data-toggle="modal" data-target="#project-9" style="background-color: #3D0707; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+											<span>Site Building</span>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-9" style="background-color: #D62246; color: #fff;">HSK 2 EXPRESS</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-9" tabindex="-1" role="dialog" aria-labelledby="project-9-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-9-label">HSK 2 EXPRESS</h4>
+											</div>
+											<div class="modal-body">
+												
+												<div class="row">												 
+													<div class="col-md-12">
+														<img src="/images/hsk2Express.png" alt="">
+														<br/>
+														<h3>HSK 2 EXPRESS, <mark>[Пакет «Булочка Бао»]</mark></h3>
+														<p>Интенсивная программа подготовки для студентов, намеренных сдать экзамен HSK 2. На занятиях вы не только значительно расширите свой лексический запас, но и научитесь описывать повседневные ситуации, используя простые и уверенные предложения. Курс построен на интерактивном подходе: практические диалоги, тематические задания и реальные сценарии общения помогут вам быстро освоить необходимые навыки для успешной сдачи экзамена.</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+							<div class="col-sm-6 col-md-3 isotope-item mobile-apps">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk3Express.png" alt="" style="width: 750px !important; height: 173px !important;">
+										<a class="overlay" data-toggle="modal" data-target="#project-12" style="background-color: #3D0707; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-12" style="background-color: #D62246; color: #fff;">HSK 3 EXPRESS</a>
+								</div>
+
+								<!-- Modal -->
+								<div class="modal fade" id="project-12" tabindex="-1" role="dialog" aria-labelledby="project-12-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-12-label">HSK 3 EXPRESS</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<div class="col-md-12">
+														<img class = "MYimage-box" src="/images/hsk3Express.png" alt="">
+														<br/>
+														<h3>HSK 3 EXPRESS, <mark>[Пакет «Каравай Бао»]</mark></h3>
+														<p>Интенсивный курс для тех, кто готовится к HSK 3. Вы расширите свой лексический запас, научитесь описывать повседневные ситуации и выразите свои мысли в простых, но уверенных предложениях. Идеально для тех, кто хочет быстро прогрессировать в изучении языка.</p>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+							<div class="col-sm-6 col-md-3 isotope-item mobile-apps">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img src="/images/hsk4Express.png" alt="" style="width: 750px; height: 174px;">
+										<a class="overlay" data-toggle="modal" data-target="#project-11" style="background-color: #3D0707; color: #fff;">
+											<i class="fa fa-search-plus"></i>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-11" style="background-color: #D62246; color: #fff;">HSK 4 EXPRESS</a>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="project-11" tabindex="-1" role="dialog" aria-labelledby="project-11-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="project-11-label">HSK 4 EXPRESS</h4>
+											</div>
+											<div class="modal-body">
+
+												<div class="row">
+													<p class="col-md-12">
+														<img class = "MYimage-box" src="/images/hsk4Express.png" alt="">
+														<br/>
+														<h3>HSK 4 EXPRESS, <mark>[Пакет «Торт Бао»]</mark></h3>
+														<p>Курс для уверенных в себе студентов, стремящихся улучшить знание языка. Вы погрузитесь в практическое использование языка, овладеете более сложной грамматикой и подготовитесь к уверенной сдаче HSK 4. Программа включает чтение, письмо, аудирование и разговорную практику.</p>
+												</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрыть</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+
+						</div>
+						<!-- portfolio items end -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- section end -->
+<!-- section start --> 
+		<section class="default-bg secPadding">
+			
+<div class="container">
+  <div class="row">
+    <div class='col-md-offset-2 col-md-8 text-center'>
+    <h2>Cheng Yu</h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-offset-2 col-md-8'>
+      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+        <!-- Bottom Carousel Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#quote-carousel" data-slide-to="1"></li>
+          <li data-target="#quote-carousel" data-slide-to="2"></li>
+        </ol>
+        
+        <!-- Carousel Slides / Quotes -->
+        <div class="carousel-inner">
+        
+          <!-- Quote 1 -->
+          <div class="item active">
+            <blockquote>
+              <div class="row">
+                <div class="col-sm-3 text-center">
+                  <img class="img-circle" style="width: 100px;height:100px;">
+                </div>
+                <div class="col-sm-9">
+                  <p>三人行，必有我师<br>Sānrén xíng, bìyǒu wǒ shī.</p>
+                  <small>Среди троих найдётся тот, у кого я могу учиться</small>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+          <!-- Quote 2 -->
+          <div class="item">
+            <blockquote>
+              <div class="row">
+                <div class="col-sm-3 text-center">
+                  <img class="img-circle" style="width: 100px;height:100px;">
+                </div>
+                <div class="col-sm-9">
+                  <p>学如逆水行舟，不进则退<br>Xué rú nì shuǐ xíng zhōu, bù jìn zé tuì.</p>
+                  <small>Учение подобно гребле против течения: если не продвигаешься вперёд, то откатываешься назад.</small>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+          <!-- Quote 3 -->
+          <div class="item">
+            <blockquote>
+              <div class="row">
+                <div class="col-sm-3 text-center">
+                  <img class="img-circle" style="width: 100px;height:100px;">
+                </div>
+                <div class="col-sm-9">
+                  <p>为时不晚<br>wéi shí bù wǎn</p>
+                  <small>Никогда не поздно</small>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+        </div>              
+      </div>                          
+    </div>
+  </div>
+</div>
+		</section>
+			<section id="price" class="price-table secPadding">
+				<div class="container text-center">
+					<div class="heading">
+						<h1 class="text-center title" id="">Цены на курсы:</h1>
+						<div class="separator"></div>
+						<p class="lead text-center">
+							Интерактивные уроки, персональные рекомендации, доступные преподаватели.<br> Учиться у нас легко и интересно!
+						</p>
+						<br>
+					</div>
+					<div class="row">
+						<!-- Уровень 1 -->
+						<div class="col-sm-3">
+							<div class="panel panel-default text-center" style="border: none !important; margin-top: 44px !important;">
+								<div class="panel-heading">
+									<h3>Стартовый пакет <br>"Крошка Бао"<br><strong>(Xiǎo 小包)</strong></h3>
+								</div>
+								<div class="panel-body">
+									<h3 class="panel-title price">90.<span class="price-cents">99BYN</span><span class="price-month">/мес.</span></h3>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item">HSK 1</li>
+									<li class="list-group-item">HSK 2</li>
+									<li class="list-group-item">Разговорный клуб</li>
+									<li class="list-group-item">5 уроков в месяц</li>
+									<li class="list-group-item"><a class="btn btn-default scrollspy smooth-scroll" href="#contact">Клик</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- Уровень 2 -->
+						<div class="col-sm-3">
+							<div class="panel panel-default text-center" style="border: none !important;">
+								<div class="panel-heading">
+									<h3>Продвинутый пакет <br>"Булочка Чао" <br><strong>(Chāo 包超)</strong></h3>
+								</div>
+								<div class="panel-body">
+									<h3 class="panel-title price">190.<span class="price-cents">99BYN</span><span class="price-month">/мес.</span></h3>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item">HSK 1</li>
+									<li class="list-group-item">HSK 2 (экспресс)</li>
+									<li class="list-group-item">HSK 3</li>
+									<li class="list-group-item">+ Все уровни ниже</li>
+									<li class="list-group-item">10 уроков в месяц</li>
+									<li class="list-group-item"><a class="btn btn-default scrollspy smooth-scroll" href="#contact">Клик</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- Уровень 3 -->
+						<div class="col-sm-3">
+							<div class="panel panel-default text-center" style="border: none !important;">
+								<div class="panel-heading">
+									<h3>Проф. пакет<br>"Каравай Бао"<br><strong>(Miàn 面包)</strong></h3>
+								</div>
+								<div class="panel-body">
+									<h3 class="panel-title price">290.<span class="price-cents">99BYN</span><span class="price-month">/мес.</span></h3>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item">HSK 4</li>
+									<li class="list-group-item">HSK 3 (экспресс)</li>
+									<li class="list-group-item">HSKK</li>
+									<li class="list-group-item">+ Все уровни ниже</li>
+									<li class="list-group-item">15 уроков в месяц</li>
+									<li class="list-group-item"><a class="btn btn-default scrollspy smooth-scroll" href="#contact">Клик</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- Уровень 4 -->
+						<div class="col-sm-3">
+							<div class="panel panel-default text-center" style="border: none !important;">
+								<div class="panel-heading">
+									<h3>Ultimate пакет <br>"Торт Бао"<br><strong>(Dàngāo 蛋糕包)</strong></h3>
+								</div>
+								<div class="panel-body">
+									<h3 class="panel-title price">490.<span class="price-cents">99BYN</span><span class="price-month">/мес.</span></h3>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item">HSK 5</li>
+									<li class="list-group-item">HSK 6</li>
+									<li class="list-group-item">HSK 4 (экспресс)</li>
+									<li class="list-group-item">+ Все уровни ниже</li>
+									<li class="list-group-item">20 уроков в месяц</li>
+									<li class="list-group-item"><a class="btn btn-default scrollspy smooth-scroll" href="#contact">Клик</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		<footer id="footer">
+
+			<!-- .footer start -->
+			<div class="footer section">
+				<div class="container">
+					<h1 class="title text-center" id="contact">Оставь заявку!</h1>
+					<div class="space"></div>
+					<div class="row">
+
+						<div class="col-sm-6">
+							<div class="footer-content">
+								<form role="form" id="footer-form" style="background-color: #dcdcdc; padding: 20px; border-radius: 8px;">
+								<div class="form-group has-feedback">
+										<label class="sr-only" for="name2">Name</label>
+										<input type="text" class="form-control" id="name2" placeholder="Имя" name="name2" required>
+										<i class="fa fa-user form-control-feedback"></i>
+									</div>
+									<div class="form-group has-feedback">
+										<label class="sr-only" for="email2">Email address</label>
+										<input type="email" class="form-control" id="email2" placeholder="Адрес электронной почты" name="email2" required>
+										<i class="fa fa-envelope form-control-feedback"></i>
+									</div>
+									<div class="form-group has-feedback">
+										<label class="sr-only" for="message2">Message</label>
+										<textarea class="form-control" rows="8" id="message2" placeholder="Дополнительные данные" name="message2" required></textarea>
+										<i class="fa fa-pencil form-control-feedback"></i>
+									</div>
+									<input type="submit" value="Отправить" class="btn btn-default" style="color: white">
+								</form>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="footer-content">
+
+
+								<div class="widget-content">
+
+									<p>
+										Хотите присоединиться к нашим курсам или задать вопрос? Заполните форму, и мы обязательно свяжемся с вами! Ваши успехи — наша главная цель, и мы готовы помочь вам на пути изучения китайского языка.
+									</p>
+									<p>
+										Укажите свои данные, и мы предоставим подробную информацию о наших программах и обучении. Ваше путешествие в мир китайского языка начинается здесь!
+									</p>
+									<p class="contacts"><i class="fa fa-map-marker"></i> ул. Академика Грушевского, 10, офис 304, Минск, Беларусь.</p>
+
+									<p class="contacts"><i class="fa fa-phone"></i>+375(44)123-45-67</p>
+
+									<p class="contacts"><i class="fa fa-envelope"></i> HanYi2025@school.com</p>
+
+
+
+								</div>
+
+								</aside>
+								<ul class="social-links" style="margin-left: -440px;">
+									<li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
+									<li class="telegram">
+										<a target="_blank" href="#">
+											<img src="/icons/telegram.png" alt="Telegram Icon" class="social-icon" style="height: 24px; opacity: 75%; margin-top: 12px; margin-left: 3px">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .footer end -->
+
+			<!-- .subfooter start -->
+			<div class="subfooter">
+				<div class="container">
+					<div class="row">
+						<!-- Картинка дракона слева -->
+						<div class="col-md-3">
+							<a href="#banner" class="smooth-scroll">
+								<span class="footer-image" style="margin-bottom: 0px;">汉易</span>
+							</a>
+						</div>
+						<!-- Текст справа -->
+						<div class="col-md-9">
+							<p class="text-center-cr" style="bottom: 0px;">Copyright © 2025 Han Yi <a target="_blank" href="http:/"></a></p>
+						</div>
+						<div>
+							<ul class="social-links social-link-sub" style="position: absolute; display: block; right: 100px; ">
+								<li class="youtube"><a href="#"><i class="fa fa-youtube"></i></a></li>
+								<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- .subfooter end -->
+
+		</footer>
+		<!-- footer end -->
+
+
+
+			<!-- footer start -->
+
+		<script th:src="@{/plugins/jquery.min.js}"></script>
+		<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/plugins/modernizr.js}"></script>
+		<script th:src="@{/plugins/isotope/isotope.pkgd.min.js}"></script>
+		<script th:src="@{/plugins/jquery.backstretch.min.js}"></script>
+		<script th:src="@{/plugins/jquery.appear.js}"></script>
+		<script th:src="@{/js/custom.js}"></script>
+
+	</body>
+</html>

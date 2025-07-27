@@ -1,0 +1,219 @@
+2025-07-27 13:53:07.891 [HAN_YI] INFO  edu.HanYi.HanYiApplication - Starting HanYiApplication using Java 23.0.1 with PID 11596 (C:\Users\mayia\IdeaProjects\HanYi\target\classes started by mayia in C:\Users\mayia\IdeaProjects\HanYi)
+2025-07-27 13:53:07.894 [HAN_YI] DEBUG edu.HanYi.HanYiApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-27 13:53:07.895 [HAN_YI] INFO  edu.HanYi.HanYiApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-27 13:53:14.933 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-07-27 13:53:16.737 [HAN_YI] INFO  edu.HanYi.HanYiApplication - Started HanYiApplication in 9.751 seconds (process running for 11.109)
+2025-07-27 13:53:23.709 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /signin
+2025-07-27 13:53:23.713 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: null
+2025-07-27 13:53:24.590 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /favicon.ico
+2025-07-27 13:53:24.590 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: null
+2025-07-27 13:53:31.007 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /api/auth/signin
+2025-07-27 13:53:31.008 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: null
+2025-07-27 13:53:31.039 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign in user: test1@mail.com
+2025-07-27 13:53:31.564 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - User successfully signed in: test1@mail.com
+2025-07-27 13:53:31.587 [HAN_YI] INFO  e.H.s.c.AuthenticationController - JWT cookie set for user: test1@mail.com
+2025-07-27 13:53:31.613 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /home
+2025-07-27 13:53:31.614 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:31.645 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:31.701 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:31.701 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:31.929 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /bootstrap/css/bootstrap.css
+2025-07-27 13:53:31.929 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:31.934 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:31.938 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /css/custom.css
+2025-07-27 13:53:31.938 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:31.941 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /plugins/jquery.min.js
+2025-07-27 13:53:31.941 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:31.944 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:31.945 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /css/style.css
+2025-07-27 13:53:31.946 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:31.947 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /fonts/font-awesome/css/font-awesome.css
+2025-07-27 13:53:31.948 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:31.948 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:31.950 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /css/animations.css
+2025-07-27 13:53:31.951 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:31.953 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:31.966 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:31.968 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:31.968 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:31.969 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:31.969 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:31.980 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:31.981 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:31.980 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:31.996 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:31.996 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:31.996 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:31.996 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.001 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.001 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.114 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/logo.png
+2025-07-27 13:53:32.114 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.121 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.122 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /icons/shu.png
+2025-07-27 13:53:32.122 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.122 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /icons/qian.png
+2025-07-27 13:53:32.123 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.123 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /icons/lamp.png
+2025-07-27 13:53:32.123 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.127 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /icons/calligraphy.png
+2025-07-27 13:53:32.128 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /bootstrap/js/bootstrap.min.js
+2025-07-27 13:53:32.128 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.128 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.130 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.130 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.130 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.131 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.132 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.137 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.137 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.141 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.142 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.145 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.145 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.151 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.151 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.153 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.154 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.156 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /css/animate.css
+2025-07-27 13:53:32.157 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.159 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /plugins/modernizr.js
+2025-07-27 13:53:32.160 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.159 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /plugins/isotope/isotope.pkgd.min.js
+2025-07-27 13:53:32.160 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.162 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.163 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.166 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.167 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /plugins/jquery.backstretch.min.js
+2025-07-27 13:53:32.167 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.168 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /plugins/jquery.appear.js
+2025-07-27 13:53:32.168 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.169 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.169 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.171 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.173 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.173 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.174 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.175 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.175 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.177 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.177 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.180 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /js/custom.js
+2025-07-27 13:53:32.180 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.182 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.182 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.183 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.187 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.187 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.192 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /icons/xiazai.png
+2025-07-27 13:53:32.192 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.195 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /icons/long.png
+2025-07-27 13:53:32.196 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.196 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.196 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.197 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/icon1.png
+2025-07-27 13:53:32.197 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.197 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.199 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/section-image-1.png
+2025-07-27 13:53:32.199 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.199 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.200 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.202 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/section_img2.png
+2025-07-27 13:53:32.202 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.204 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.207 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk1.jpg
+2025-07-27 13:53:32.206 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.208 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.211 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.212 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.214 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.215 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.215 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.220 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.220 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.220 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.221 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.222 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.222 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.230 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk2.jpg
+2025-07-27 13:53:32.230 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.231 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.232 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.235 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.248 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.248 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk3.jpg
+2025-07-27 13:53:32.248 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.248 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.251 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.253 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk4.png
+2025-07-27 13:53:32.253 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.259 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk5.jpg
+2025-07-27 13:53:32.259 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.261 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk6.png
+2025-07-27 13:53:32.261 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.261 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.261 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.265 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.265 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.266 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/speaking_club.png
+2025-07-27 13:53:32.266 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.268 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.269 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hskk.png
+2025-07-27 13:53:32.269 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.271 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.272 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.277 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.277 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.278 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk1Express.png
+2025-07-27 13:53:32.278 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.279 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.279 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.280 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.280 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.280 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.284 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.285 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.290 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.290 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.292 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk2Express.png
+2025-07-27 13:53:32.292 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.293 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.293 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.297 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.304 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk3Express.png
+2025-07-27 13:53:32.304 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.310 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.312 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.312 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.318 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/hsk4Express.png
+2025-07-27 13:53:32.319 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.321 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.321 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.322 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.323 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /icons/telegram.png
+2025-07-27 13:53:32.323 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.327 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.328 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /css/templates/images/banner.jpg
+2025-07-27 13:53:32.329 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.332 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.332 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/divider.png
+2025-07-27 13:53:32.333 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.333 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.333 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.341 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.344 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.345 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.346 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.347 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.353 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.353 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.497 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/banner.jpg
+2025-07-27 13:53:32.498 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.499 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.506 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.506 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com
+2025-07-27 13:53:32.563 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /images/favicon.ico
+2025-07-27 13:53:32.563 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNzUzNjEzNjExLCJleHAiOjE3NTM2MTUwNTF9.2_UgFLYbFaa4f9mSIpfweWgzNEiyrTD_lgnQg9YQRDU
+2025-07-27 13:53:32.565 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test1@mail.com
+2025-07-27 13:53:32.573 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test1@mail.com, authorities: [ROLE_ADMIN]
+2025-07-27 13:53:32.573 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test1@mail.com

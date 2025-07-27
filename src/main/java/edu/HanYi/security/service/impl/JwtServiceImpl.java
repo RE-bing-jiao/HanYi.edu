@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +19,9 @@ import java.util.function.Function;
 @Slf4j
 @Service
 public class JwtServiceImpl implements JwtService {
-    //@Value("${jwt.signing.key}")
-    private final String jwtSigningKey =
-            Base64.getEncoder().encodeToString(Keys.secretKeyFor(SignatureAlgorithm.HS256).getEncoded());
+
+    @Value("${jwt.signing.key}")
+    private String jwtSigningKey;
 
     @Override
     public String extractUsername(String token) {
