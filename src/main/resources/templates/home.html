@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
+<html lang="en" class="ie9">
 <head>
 	<meta charset="utf-8">
 	<title>Han Yi Online School</title>
@@ -13,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+	<link rel="shortcut icon" th:href="@{/images/logo.png}">
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
@@ -26,7 +23,6 @@
 	<link rel="stylesheet" th:href="@{/css/style.css}">
 	<link rel="stylesheet" th:href="@{/css/custom.css}">
 
-	<!-- Шрифт Comfortaa -->
 	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -35,7 +31,7 @@
 		<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
 
 		<!-- header start --> 
-		<header class="header fixed clearfix navbar navbar-fixed-top">
+		<header class="header1 fixed clearfix navbar navbar-fixed-top">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
@@ -82,15 +78,20 @@
 										<!-- Collect the nav links, forms, and other content for toggling -->
 										<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 											<ul class="nav navbar-nav navbar-right">
-												<li class="active"><a href="#banner">Главная</a></li>
-												<li><a href="#portfolio">Курсы</a></li>
-												<li><a href="#price">Прайс</a></li>
-												<li><a href="#contact">Контакты</a></li>
-												<li><a href="/signin">Войти</a></li>
+												<li class="active"><a href="/home#banner">Главная</a></li>
+												<li><a href="/courses">Курсы</a></li>
+												<li><a href="/chat">AI Help</a></li>
 												<li th:if="${isAuthenticated}">
-													<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-													   class="nav-link">Выйти</a>
-													<form id="logout-form" action="/logout" method="post" style="display: none;">
+													<a href="/user-account">Личный Кабинет</a>
+												</li>
+												<li th:unless="${isAuthenticated}">
+													<form th:action="@{/signin}" method="get" class="btn-sec">
+														<button type="submit" class="nav-link p-0 border-0 bg-transparent">Войти</button>
+													</form>
+												</li>
+												<li th:if="${isAuthenticated}">
+													<form th:action="@{/logout}" method="post" class="btn-sec">
+														<button type="submit" class="nav-link p-0 border-0 bg-transparent">Выйти</button>
 													</form>
 												</li>
 											</ul>
@@ -467,7 +468,7 @@
 
 												<div class="row">
 													<div class="col-md-12">
-														<img src="/images//hsk4.png" alt="" class="MYimage-box">
+														<img src="/images/hsk4.png" alt="" class="MYimage-box">
 														<br/>
 														<h3>HSK 4, <mark>[Пакет «Каравай Бао»]</mark></h3>
 														<p>Программа для тех, кто хочет развить навыки устной и письменной речи. Курс включает изучение языка на профессиональном уровне, чтение сложных текстов и обучение общению в формальных и рабочих ситуациях</p>

@@ -6,7 +6,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -23,7 +22,7 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String home(Model model, @CookieValue(name = "JWT", required = false) String token) {
+    public String home(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         boolean isAuthenticated = auth != null && auth.isAuthenticated()
                 && !(auth instanceof AnonymousAuthenticationToken);

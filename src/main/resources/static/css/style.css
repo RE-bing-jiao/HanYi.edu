@@ -126,7 +126,7 @@ blockquote {
 
 /* Layout
 ----------------------------------------------------------------------------- */
-.header {
+.header1 {
 	color: #020202;
 	background-color: rgba(255, 255, 255, 1);
 	padding: 10px 0;
@@ -136,13 +136,26 @@ blockquote {
 	-ms-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
+.header {
+	 color: #020202;
+	 background-color: rgba(255, 255, 255, 1);
+	 padding: 10px 0;
+	 position: sticky;
+	 top: 0;
+	 z-index: 1000;
+	 -webkit-transition: all 0.2s ease-in-out;
+	 -moz-transition: all 0.2s ease-in-out;
+	 -o-transition: all 0.2s ease-in-out;
+	 -ms-transition: all 0.2s ease-in-out;
+	 transition: all 0.2s ease-in-out;
+ }
 .banner {
 	width: 100%;
 	height: 100%;
 	min-height: 100%;
 	position: relative;
 	color: #fff; /*text*/
-	background-image: url("templates/images/banner.jpg");
+	background-image: url("static/images/banner.jpg");
 }
 .banner-image {
 	vertical-align: middle;
@@ -186,7 +199,7 @@ color: #323232;
 	color: #ffffff;
 }
 .dragon-bg{
-	background-image: url("templates/images/divider.png");
+	background-image: url("static/images/divider.png");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -292,7 +305,7 @@ line-height: 16px;
 border: 1px solid #fff;
 padding: 20px 42px;
 border-radius: 4px;
-font-family: 'Raleway';
+	font-family: 'Raleway', serif;
 font-weight: 600;
 transition: background 0.3s, border-color 0.3s;
 margin-top:20px;
@@ -300,6 +313,11 @@ margin-top:20px;
 button.cta-button:hover{
 background:#D62246;
 color:#000;
+}
+
+.btn-sec{
+	padding-top: 7px;
+	padding-left: 7px;
 }
 /* Misc
 ----------------------------------------------------------------------------- */
@@ -1033,3 +1051,110 @@ border-radius: 50%;
 	margin-top: -15px;
 }
 
+/*DeepSeek*/
+.chat-box {
+	width: 600px;
+	margin: 20px auto;
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 8px;
+}
+textarea {
+	width: 100%;
+	height: 100px;
+	margin-bottom: 10px;
+}
+button {
+	padding: 8px 16px;
+	background: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.response {
+	margin-top: 20px;
+	padding: 10px;
+	background: #f5f5f5;
+	border-radius: 4px;
+}
+/*FLASHCARDS*/
+
+.card-flip {
+	perspective: 1000px;
+	height: 200px;
+	margin-bottom: 20px;
+}
+
+.card-flip-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.6s;
+	transform-style: preserve-3d;
+}
+
+.card-flip.flipped .card-flip-inner {
+	transform: rotateY(180deg);
+}
+
+.card-flip-front, .card-flip-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	padding: 15px;
+}
+
+.card-flip-front {
+	background-color: #4a6baf;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.card-flip-back {
+	background-color: #f8f9fa;
+	transform: rotateY(180deg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.card-title {
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+}
+
+.card-text {
+	font-size: 1rem;
+}
+.card-footer .btn-group {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(255,255,255,0.9);
+	padding: 5px;
+}
+
+.card-flip {
+	position: relative;
+	padding-bottom: 40px;
+}
+
+/*lesson*/
+.lessons-list .list-group-item {
+	border-left: none;
+	border-right: none;
+	padding: 1rem 1.25rem;
+}
+
+.lessons-list .list-group-item:first-child {
+	border-top: none;
+}
+
+.lessons-list .list-group-item:last-child {
+	border-bottom: none;
+}

@@ -18,6 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -39,6 +41,10 @@ public class SecurityConfig {
                                 "/api/auth/**",
                                 "/css/**",
                                 "/js/**",
+                                "/bootstrap/**",
+                                "/font-awesome/**",
+                                "/icons/**",
+                                "/plugins/**",
                                 "/images/**",
                                 "/static/**"
                         ).permitAll()
@@ -50,7 +56,6 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/home")
                         .addLogoutHandler((request, response, auth) -> {
                             SecurityContextHolder.clearContext();
-                            // Удаляем JWT cookie
                             Cookie cookie = new Cookie("JWT", null);
                             cookie.setPath("/");
                             cookie.setMaxAge(0);
