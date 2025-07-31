@@ -24,6 +24,20 @@
     <link rel="stylesheet" th:href="@{/css/custom.css}">
 
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+    </style>
 </head>
 
 <body class="no-trans">
@@ -78,15 +92,20 @@
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li class="active"><a href="#banner">Главная</a></li>
-                                        <li><a href="#portfolio">Курсы</a></li>
-                                        <li><a href="#price">Прайс</a></li>
-                                        <li><a href="#contact">Контакты</a></li>
-                                        <li><a href="/signin">Войти</a></li>
+                                        <li class="active"><a href="/home#banner">Главная</a></li>
+                                        <li><a href="/courses">Курсы</a></li>
+                                        <li><a href="/chat">AI Help</a></li>
                                         <li th:if="${isAuthenticated}">
-                                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                               class="nav-link">Выйти</a>
-                                            <form id="logout-form" action="/logout" method="post" style="display: none;">
+                                            <a href="/flashcards">Карточки</a>
+                                        </li>
+                                        <li th:unless="${isAuthenticated}">
+                                            <form th:action="@{/signin}" method="get" class="btn-sec">
+                                                <button type="submit" class="nav-link p-0 border-0 bg-transparent">Войти</button>
+                                            </form>
+                                        </li>
+                                        <li th:if="${isAuthenticated}">
+                                            <form th:action="@{/logout}" method="post" class="btn-sec">
+                                                <button type="submit" class="nav-link p-0 border-0 bg-transparent">Выйти</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -106,4 +125,58 @@
         </div>
     </div>
 </header>
+<div class="container">
+    <h1 class="mb-4">Мои курсы</h1>
+    <div th:if="${#lists.isEmpty(courses)}" class="alert alert-info">
+        У вас пока нет курсов
+    </div>
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6" th:each="course : ${courses}">
+            <div class="course-card">
+                <img src="/images/hsk6.png" class="course-img" alt="Course image">
+                <div class="course-card-body">
+                    <h5 class="course-title" th:text="${course.header()}"></h5>
+                    <p class="course-description" th:text="${course.description()}"></p>
+                    <a th:href="@{/lesson/1/course/{courseId}(courseId=${course.id})}" class="btn btn-primary course-btn" style="border-radius: 8px; font-weight: 500;">
+                        Начать обучение
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="subfooter">
+    <div class="container">
+        <div class="row">
+            <!-- Картинка дракона слева -->
+            <div class="col-md-3">
+                <a href="/home#banner" class="smooth-scroll">
+                    <span class="footer-image" style="margin-bottom: 0px;">汉易</span>
+                </a>
+            </div>
+            <!-- Текст справа -->
+            <div class="col-md-9">
+                <p class="text-center-cr" style="bottom: 0px;">Copyright © 2025 Han Yi <a target="_blank" href="http:/"></a></p>
+            </div>
+            <div>
+                <ul class="social-links social-link-sub" style="position: absolute; display: block; right: 100px; ">
+                    <li class="youtube"><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/plugins/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/modernizr.js}"></script>
+<script th:src="@{/plugins/isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{/plugins/jquery.backstretch.min.js}"></script>
+<script th:src="@{/plugins/jquery.appear.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+
 </body>

@@ -2,10 +2,9 @@
 <html lang="en" class="ie9">
 <head>
     <meta charset="utf-8">
-    <title>Han Yi Online School</title>
     <meta name="description" content="Responsive HTML5 Template">
     <meta name="author" content="webthemez">
-    <title>Урок</title>
+    <title>Карточки</title>
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -26,13 +25,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
 
 </head>
-
-<body class="no-trans">
-<!-- scrollToTop -->
-<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
-
-<!-- header start -->
-<header class="header fixed clearfix navbar navbar-fixed-top">
+<body>
+<header class="header1 fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -42,12 +36,12 @@
 
                     <!-- logo -->
                     <div class="logo smooth-scroll">
-                        <a href="/home"><img id="logo" src="/images/logo.png" alt="han yi" style="width: 80px; height: auto"></a>
+                        <a href="#banner"><img id="logo" src="/images/logo.png" alt="han yi" style="width: 80px; height: auto"></a>
                     </div>
 
                     <!-- name-and-slogan -->
                     <div class="logo-section smooth-scroll">
-                        <div class="brand"><a href="/home">Han Yi</a></div>
+                        <div class="brand"><a href="#banner">Han Yi</a></div>
                     </div>
 
                 </div>
@@ -80,8 +74,8 @@
                                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="/home#banner">Главная</a></li>
-                                        <li><a href="/coursesinfo">Курсы</a></li>
-                                        <li><a href="/flashcards">Карточки</a></li>
+                                        <li><a href="/courses-info">Курсы</a></li>
+                                        <li><a href="/chat">AI Help</a></li>
                                         <li th:if="${isAuthenticated}">
                                             <a href="/courses">Мои курсы</a>
                                         </li>
@@ -97,32 +91,76 @@
                                         </li>
                                     </ul>
                                 </div>
+
                             </div>
                         </nav>
                         <!-- navbar end -->
+
                     </div>
                     <!-- main-navigation end -->
+
                 </div>
                 <!-- header-right end -->
+
             </div>
         </div>
     </div>
+</header>
 
-    <div class="chat-box">
-        <h1>DeepSeek Chat</h1>
-        <form method="post" th:action="@{/chat}">
-            <textarea name="userMessage" th:value="${userMessage}" placeholder="Введите ваш запрос..."></textarea>
-            <button type="submit">Отправить</button>
-        </form>
+<div class="container" style="margin-top: 50px;">
 
-        <div th:if="${error}" class="error-message" th:text="${error}"></div>
-
-        <div class="response" th:if="${response}">
-            <h3>Ответ:</h3>
-            <div th:utext="${response}"></div>
+    <h1>Мои флешкарточки</h1>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    <div class="d-flex justify-content-between mb-4">
+        <a th:href="@{/edit-flashcard/new}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Создать новую
+        </a>
+        <div class="btn-group">
+            <a th:href="@{/flashcards(sort='asc')}" class="btn btn-outline-primary">
+                <i class="bi bi-sort-up"></i> Сначала старые
+            </a>
+            <a th:href="@{/flashcards(sort='desc')}" class="btn btn-outline-primary">
+                <i class="bi bi-sort-down"></i> Сначала новые
+            </a>
         </div>
     </div>
-</header>
+    <div th:if="${#lists.isEmpty(flashcards)}" class="alert alert-info">
+        У вас пока нет флешкарточек
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4 col-sm-2 col-md-2" th:each="card : ${flashcards}">
+            <div class="card-flip-container">
+                <div class="card-flip" onclick="this.classList.toggle('flipped')">
+                    <div class="card-flip-inner">
+                        <div class="card-flip-front">
+                            <div class="card-body">
+                                <h3 class="card-title" th:text="${card.frontText()}"></h3>
+                            </div>
+                        </div>
+                        <div class="card-flip-back">
+                            <div class="card-body">
+                                <h4 class="card-subtitle mb-2">Ответ:</h4>
+                                <p class="card-text" th:text="${card.backText()}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <a th:href="@{'/edit-flashcard/' + ${card.id()}}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil"></i> Изменить
+                    </a>
+                    <form th:action="@{'/flashcards/delete/' + ${card.id()}}" method="post" class="d-inline">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit" class="btn btn-danger btn-sm" style="border-radius: 8px; font-weight: 500;" onclick="return confirm('Удалить карточку?')">
+                            <i class="bi bi-trash"></i> Удалить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="subfooter">
     <div class="container">

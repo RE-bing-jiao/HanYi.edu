@@ -50,7 +50,7 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private String createToken(Map<String, Object> extraClaims, String subject) {
-        long jwtExpiration = 1000 * 60 * 24;
+        long jwtExpiration = 1000 * 60 * 60 * 6;
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(subject)

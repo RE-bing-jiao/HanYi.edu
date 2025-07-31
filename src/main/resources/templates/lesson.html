@@ -69,7 +69,7 @@
                                         <li><a href="/courses">Курсы</a></li>
                                         <li><a href="/chat">AI Help</a></li>
                                         <li th:if="${isAuthenticated}">
-                                            <a href="/user-account">Личный Кабинет</a>
+                                            <a href="/flashcards">Карточки</a>
                                         </li>
                                         <li th:unless="${isAuthenticated}">
                                             <form th:action="@{/signin}" method="get" class="btn-sec">
@@ -98,35 +98,36 @@
         </div>
     </div>
 </header>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="ratio ratio-16x9">
-                        <iframe th:src="${lesson.url}" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h4 th:text="${lesson.header}"></h4>
-                </div>
-                <div class="card-body">
-                    <p th:text="${lesson.description}"></p>
-                    <div class="d-grid gap-2">
-                        <a th:href="@{/user-account}"
-                           class="btn btn-outline-primary">
-                            Вернуться
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container">
+    <h1 th:text="${lesson.header()}"></h1>
+    <p th:text="${lesson.description()}"></p>
+
+    <div class="ratio ratio-16x9 mb-4">
+        <iframe th:src="${lesson.url}" allow="fullscreen"></iframe>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <a th:if="${lesson.lessonOrderNum > 1}"
+           th:href="@{/lesson/{orderNum}/course/{courseId}(orderNum=${lesson.lessonOrderNum - 1}, courseId=${lesson.courseId})}"
+           class="btn btn-secondary" style="border-radius: 8px; font-weight: 500;">
+            ← Предыдущий урок
+        </a>
+
+        <a th:href="@{/lesson/{orderNum}/course/{courseId}(orderNum=${lesson.lessonOrderNum + 1}, courseId=${lesson.courseId})}"
+           class="btn btn-primary" style="border-radius: 8px; font-weight: 500;">
+            Следующий урок →
+        </a>
     </div>
 </div>
+
+<script th:src="@{/plugins/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/modernizr.js}"></script>
+<script th:src="@{/plugins/isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{/plugins/jquery.backstretch.min.js}"></script>
+<script th:src="@{/plugins/jquery.appear.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+
 </body>
 </html>

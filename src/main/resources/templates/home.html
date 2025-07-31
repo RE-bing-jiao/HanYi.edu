@@ -82,7 +82,7 @@
 												<li><a href="/courses">Курсы</a></li>
 												<li><a href="/chat">AI Help</a></li>
 												<li th:if="${isAuthenticated}">
-													<a href="/user-account">Личный Кабинет</a>
+													<a href="/courses">Мои курсы</a>
 												</li>
 												<li th:unless="${isAuthenticated}">
 													<form th:action="@{/signin}" method="get" class="btn-sec">

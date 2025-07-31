@@ -110,22 +110,26 @@
 </header>
 
 <div class="container mt-4">
-    <h2>Редактирование флешкарточки</h2>
-    <form th:action="@{'/api/flashcards/' + ${flashcard.id()}}" method="put">
-        <input type="hidden" name="_method" value="put"/>
+    <h2 th:text="${flashcard.id() == 0} ? 'Создание новой флешкарточки' : 'Редактирование флешкарточки'"></h2>
+    <form th:action="@{/edit-flashcard/process-form}" method="post">
+        <input type="hidden" name="id" th:value="${flashcard.id()}"/>
+
         <div class="mb-3">
             <label class="form-label">Передняя сторона</label>
             <input type="text" class="form-control" name="frontText"
                    th:value="${flashcard.frontText()}" required>
         </div>
+
         <div class="mb-3">
             <label class="form-label">Оборотная сторона</label>
             <input type="text" class="form-control" name="backText"
                    th:value="${flashcard.backText()}" required>
         </div>
+
         <input type="hidden" name="userId" th:value="${flashcard.userId()}"/>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
-        <a th:href="@{/user-account}" class="btn btn-secondary">Отмена</a>
+
+        <button type="submit" class="btn btn-primary" style="border-radius: 8px; font-weight: 500;">Сохранить</button>
+        <a th:href="@{/flashcards}" class="btn btn-secondary" style="border-radius: 8px; font-weight: 500;">Отмена</a>
     </form>
 </div>
 

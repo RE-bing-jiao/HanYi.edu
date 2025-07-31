@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class LessonController {
     private final LessonService lessonService;
 
-    @GetMapping("/lesson/{orderNum}/course{courseId}")
+    @GetMapping("/lesson/{orderNum}/course/{courseId}")
     public String getLesson(@PathVariable Integer orderNum,
                             @PathVariable Integer courseId,
                             Model model,
