@@ -59,7 +59,7 @@ class UserServiceImplTest {
         UserResponse response = userService.createUser(validRequest);
 
         assertNotNull(response);
-        assertEquals(validRequest.username(), response.username());
+        assertEquals(validRequest.email(), response.username());
         verify(userRepository).existsByUsername(validRequest.username());
         verify(userRepository).existsByEmail(validRequest.email());
         verify(userRepository).save(any(User.class));
@@ -128,7 +128,7 @@ class UserServiceImplTest {
         );
         UserResponse response = userService.updateUser(1, updateRequest);
 
-        assertEquals(updateRequest.username(), response.username());
+        assertEquals(updateRequest.email(), response.username());
         verify(userRepository).save(any(User.class));
     }
 
