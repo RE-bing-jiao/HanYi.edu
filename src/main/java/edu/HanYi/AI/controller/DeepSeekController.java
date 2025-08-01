@@ -2,11 +2,10 @@ package edu.HanYi.AI.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.HanYi.AI.dto.DeepSeekResponse;
+import edu.HanYi.controller.frontend.utils.AuthStatus;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,9 @@ import java.util.Map;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class DeepSeekController {
+    private final AuthStatus authStatus;
     private static final String DEEPSEEK_API_URL = "https://api.deepseek.com/chat/completions";
 
     @Value("${deepseek.api.key}")
@@ -30,10 +31,7 @@ public class DeepSeekController {
 
     @GetMapping("/chat")
     public String showChatForm(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        boolean isAuthenticated = auth != null && auth.isAuthenticated()
-                && !(auth instanceof AnonymousAuthenticationToken);
-        model.addAttribute("isAuthenticated", isAuthenticated);
+        authStatus.addAuthStatusToModel(model);
         return "chat";
     }
 

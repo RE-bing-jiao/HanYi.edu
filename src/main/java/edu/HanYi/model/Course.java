@@ -58,5 +58,5 @@ public class Course {
     @DecimalMin("0.00")
     @DecimalMax("100.00")
     @Column(precision = 5, scale = 2)
-    private BigDecimal progress = BigDecimal.ZERO;
+    private BigDecimal progress = BigDecimal.ZERO; //not using this, legacy
 }

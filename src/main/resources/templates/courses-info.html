@@ -1,23 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" class="ie9">
+<<html lang="en" class="ie9">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="${lesson.header}"></title>
+    <meta charset="utf-8">
+    <title>Мои курсы</title>
+    <meta name="description" content="Responsive HTML5 Template">
+    <meta name="author" content="webthemez">
+
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
     <link rel="shortcut icon" th:href="@{/images/logo.png}">
 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
 
+    <!-- Custom CSS -->
     <link rel="stylesheet" th:href="@{/css/animations.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/custom.css}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+    </style>
 </head>
-<body>
+
+<body class="no-trans">
+<!-- scrollToTop -->
+<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+
+<!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
@@ -66,7 +93,7 @@
                                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="/home#banner">Главная</a></li>
-                                        <li><a href="/courses-info">Курсы</a></li>
+                                        <li><a href="/courses">Мои курсы</a></li>
                                         <li><a href="/chat">AI Help</a></li>
                                         <li th:if="${isAuthenticated}">
                                             <a href="/flashcards">Карточки</a>
@@ -99,32 +126,65 @@
     </div>
 </header>
 
-<div class="container">
-    <h1 th:text="${lesson.header()}"></h1>
-    <p th:text="${lesson.description()}"></p>
+<div class="container mt-4">
+    <h1>Все курсы</h1>
 
-    <div class="ratio ratio-16x9 mb-4">
-        <iframe th:src="${lesson.url}" allow="fullscreen"></iframe>
+    <div class="mb-5 py-3">
+        <a th:href="@{/courses-info}" class="btn btn-primary mr-3 mb-2">Все категории</a>  <
+        <th:block th:each="category : ${categories}">
+            <a th:href="@{/courses-info(categoryId=${category.id})}" class="btn btn-outline-primary mr-3 mb-2" th:text="${category.name}"></a>
+        </th:block>
     </div>
 
-    <div class="d-flex justify-content-between mt-4">
-        <a th:if="${lesson.lessonOrderNum > 1}"
-           th:href="@{/lesson/{orderNum}/course/{courseId}(orderNum=${lesson.lessonOrderNum - 1}, courseId=${lesson.courseId})}"
-           class="btn btn-secondary" style="border-radius: 8px; font-weight: 500;">
-            ← Предыдущий урок
-        </a>
+    <div class="row align-items-stretch">
+        <div th:each="course : ${courses}" class="col-md-3 mb-4 d-flex mx-2">
+            <div class="course-card w-100">
+                <span class="category-badge" th:text="${course.categoryName}"></span>
 
-        <a th:if="${!isLastLesson}"
-           th:href="@{/lesson/{orderNum}/course/{courseId}(orderNum=${lesson.lessonOrderNum + 1}, courseId=${lesson.courseId})}"
-           class="btn btn-primary" style="border-radius: 8px; font-weight: 500;">
-            Следующий урок →
-        </a>
+                <img src="/images/hsk4.png" alt="" class="course-image">
 
-        <a th:if="${isLastLesson}"
-           th:href="@{/courses}"
-           class="btn btn-success" style="border-radius: 8px; font-weight: 500;">
-            Завершить курс
-        </a>
+                <div class="course-overlay">
+                    <h5 th:text="${course.header}"></h5>
+                    <p class="small" th:text="${course.description}"></p>
+                    <small>Категория: <span th:text="${course.categoryName}"></span></small>
+                    <button class="btn btn-sm course-btn mt-2" data-toggle="modal" th:attr="data-target='#courseModal-' + ${course.id}">
+                    Подробнее
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal fade" th:id="'courseModal-' + ${course.id}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header align-items-center">
+                            <h4 class="modal-title mb-0" th:text="${course.header}"></h4>
+                            <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close" style="margin: -1rem -1rem -1rem auto;">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img src="/images/hsk4.png" alt="" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+                                    <h5 th:text="${course.header}"></h5>
+                                    <p class="text-muted mb-3" th:text="'Категория: ' + ${course.categoryName}"></p>
+                                    <p th:text="${course.description}"></p>
+
+                                    <div class="mt-3">
+                                        <h6>Детали курса:</h6>
+                                        <p class="mb-1"><small>Дата начала: <span th:text="${#temporals.format(course.entryDate, 'dd.MM.yyyy')}"></span></small></p>
+                                        <p class="mb-1"><small>Дата окончания: <span th:text="${#temporals.format(course.exitDate, 'dd.MM.yyyy')}"></span></small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer py-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -1,56 +1,83 @@
-insert into categories (name,
-                        description) values
-                                         ('Beginner', 'Courses for absolute beginners'),
-                                         ('Intermediate', 'For learners with basic knowledge'),
-                                         ('Advanced', 'Advanced level courses'),
-                                         ('HSK 1', '汉语水平考试一级课程 - HSK Level 1 courses'),
-                                         ('HSK 2', '汉语水平考试二级课程 - HSK Level 2 courses');
+insert into categories (name, description) values
+                                               ('Начинающий', 'Курсы для абсолютных новичков'),
+                                               ('Средний', 'Для тех, кто уже знает основы'),
+                                               ('Продвинутый', 'Для уверенных в языке'),
+                                               ('HSK 1', 'Подготовка к экзамену HSK 1'),
+                                               ('HSK 2', 'Подготовка к экзамену HSK 2');
 
-insert into users (username,
-                   password,
-                   email,
-                   role) values
-                             ('admin', 'p@ssw0rdD1234', 'admin@chinese.com', 'ADMIN'),
-                             ('teacher1', 'p@ssw0rdD1234', 'teacher1@chinese.com', 'TEACHER'),
-                             ('student1', 'p@ssw0rdD1234', 'student1@chinese.com', 'STUDENT'),
-                             ('eva_li', '$2a$12$uUuB.xsFHH2ERZ4pJ2xineggCttxECX3fCPA4szXTz3TwOe1HaT1m', 'evali@mail.com', 'STUDENT');
+insert into users (username, password, email, role) values
+                                                        ('admin', '$2a$10$2pkzv7V9PNyRqMuu8me6OetCz29mvF0vOUXbBws1vnvrznCD4x6Pm', 'admin@gmail.com', 'ADMIN'),
+                                                        ('teacher', '$2a$10$2pkzv7V9PNyRqMuu8me6OetCz29mvF0vOUXbBws1vnvrznCD4x6Pm', 'teacher@mail.ru', 'TEACHER'),
+                                                        ('student', '$2a$10$2pkzv7V9PNyRqMuu8me6OetCz29mvF0vOUXbBws1vnvrznCD4x6Pm', 'student@gmail.com', 'STUDENT');
 
-insert into courses (header,
-                     description,
-                     category_id,
-                     entry_date,
-                     exit_date,
-                     progress) values
-                                   ('Basic Chinese', 'Introduction to Mandarin Chinese', 1, '2027-09-01 00:00:00', '2028-12-31 23:59:59', 25.50),
-                                   ('Daily Conversation', 'Common phrases for daily life', 2, '2027-09-01 00:00:00', '2028-02-28 23:59:59', 10.00),
-                                   ('Business Chinese', 'Chinese for business communication', 3, '2027-10-01 00:00:00', '2028-03-31 23:59:59', 0.00),
-                                   ('HSK 1 Preparation', 'HSK 1 考试准备课程', 4, '2027-09-15 00:00:00', '2028-12-15 23:59:59', 5.00);
+insert into courses (header, description, category_id, entry_date, exit_date, progress) values
+                                                                                            ('Основы китайского', 'Базовый курс для начинающих', 1, '2026-01-01 00:00:00', '2026-12-31 23:59:59', 0.00),
+                                                                                            ('Разговорный китайский', 'Повседневные фразы и диалоги', 2, '2026-02-01 00:00:00', '2026-11-30 23:59:59', 0.00),
+                                                                                            ('Деловой китайский', 'Язык для бизнеса и переговоров', 3, '2026-03-01 00:00:00', '2026-10-31 23:59:59', 0.00),
+                                                                                            ('Подготовка к HSK 1', 'Полный курс для сдачи экзамена', 4, '2026-04-01 00:00:00', '2026-09-30 23:59:59', 0.00),
+                                                                                            ('Китайские иероглифы', 'Изучение написания и значений', 1, '2026-05-01 00:00:00', '2026-08-31 23:59:59', 0.00);
 
-insert into lessons (lesson_order_num,
-                     header,
-                     description,
-                     url,
-                     course_id) values
-                                    (1, 'Greetings', 'Basic greetings in Chinese', 'https://hanyi.com/lessons/1', 1),
-                                    (1, 'Shopping', 'Essential shopping phrases', 'https://hanyi.com/lessons/3', 2),
-                                    (1, 'Introduction', '自我介绍 - Self introduction', 'https://hanyi.com/lessons/4', 4),
-                                    (2, 'Family', '家庭成员 - Family members', 'https://hanyi.com/lessons/5', 4);
+insert into lessons (lesson_order_num, header, description, url, course_id) values
+                                                                                /* Курс 1 (Основы китайского)*/
+                                                                                (1, 'Приветствия', 'Как поздороваться по-китайски', 'https://youtu.be/dQw4w9WgXcQ', 1),
+                                                                                (2, 'Цифры', 'Числа от 1 до 10', 'https://youtu.be/dQw4w9WgXcQ', 1),
+                                                                                (3, 'Семья', 'Названия членов семьи', 'https://youtu.be/dQw4w9WgXcQ', 1),
+                                                                                (4, 'Еда', 'Основные слова о еде', 'https://youtu.be/dQw4w9WgXcQ', 1),
+                                                                                (5, 'Время', 'Как спросить время', 'https://youtu.be/dQw4w9WgXcQ', 1),
 
-insert into entries (user_id,
-                     course_id,
-                     entry_date) values
-                                     (3, 1, '2027-09-01 10:00:00'),
-                                     (3, 2, '2027-09-02 11:00:00'),
-                                     (4, 4, '2027-09-15 09:30:00');
+                                                                                /* Курс 2 (Разговорный китайский)*/
+                                                                                (1, 'В магазине', 'Фразы для покупок', 'https://youtu.be/dQw4w9WgXcQ', 2),
+                                                                                (2, 'В ресторане', 'Как заказать еду', 'https://youtu.be/dQw4w9WgXcQ', 2),
+                                                                                (3, 'Транспорт', 'Как спросить дорогу', 'https://youtu.be/dQw4w9WgXcQ', 2),
+                                                                                (4, 'Знакомство', 'Как представиться', 'https://youtu.be/dQw4w9WgXcQ', 2),
+                                                                                (5, 'Погода', 'Обсуждение погоды', 'https://youtu.be/dQw4w9WgXcQ', 2),
 
-insert into flashcards (user_id,
-                        front_text,
-                        back_text) values
-                                       (3, '你好', 'Hello'),
-                                       (3, '谢谢', 'Thank you'),
-                                       (3, '再见', 'Goodbye'),
-                                       (4, '早上好', 'Good morning'),
-                                       (4, '晚上好', 'Good evening'),
-                                       (4, '我叫伊娃', 'My name is Eva'),
-                                       (4, '中国', 'China'),
-                                       (4, '北京', 'Beijing');
+                                                                                /* Курс 3 (Деловой китайский)*/
+                                                                                (1, 'Деловые встречи', 'Фразы для переговоров', 'https://youtu.be/dQw4w9WgXcQ', 3),
+                                                                                (2, 'Презентации', 'Как представить проект', 'https://youtu.be/dQw4w9WgXcQ', 3),
+                                                                                (3, 'Деловая переписка', 'Электронные письма', 'https://youtu.be/dQw4w9WgXcQ', 3),
+                                                                                (4, 'Телефонные звонки', 'Общение по телефону', 'https://youtu.be/dQw4w9WgXcQ', 3),
+                                                                                (5, 'Культурные особенности', 'Деловой этикет в Китае', 'https://youtu.be/dQw4w9WgXcQ', 3),
+
+                                                                                /* Курс 4 (HSK 1)*/
+                                                                                (1, 'Основные иероглифы', '50 ключевых иероглифов', 'https://youtu.be/dQw4w9WgXcQ', 4),
+                                                                                (2, 'Грамматика HSK 1', 'Простые конструкции', 'https://youtu.be/dQw4w9WgXcQ', 4),
+                                                                                (3, 'Аудирование', 'Тренировка восприятия на слух', 'https://youtu.be/dQw4w9WgXcQ', 4),
+                                                                                (4, 'Тестовая часть', 'Примеры заданий', 'https://youtu.be/dQw4w9WgXcQ', 4),
+                                                                                (5, 'Советы по экзамену', 'Как успешно сдать HSK 1', 'https://youtu.be/dQw4w9WgXcQ', 4),
+
+                                                                                /* Курс 5 (Китайские иероглифы)*/
+                                                                                (1, 'Ключевые черты', 'Основные элементы иероглифов', 'https://youtu.be/dQw4w9WgXcQ', 5),
+                                                                                (2, 'Порядок черт', 'Правила написания', 'https://youtu.be/dQw4w9WgXcQ', 5),
+                                                                                (3, 'Часто используемые', 'Топ-100 иероглифов', 'https://youtu.be/dQw4w9WgXcQ', 5),
+                                                                                (4, 'Мнемоника', 'Методы запоминания', 'https://youtu.be/dQw4w9WgXcQ', 5),
+                                                                                (5, 'Практика', 'Тренировка написания', 'https://youtu.be/dQw4w9WgXcQ', 5);
+insert into entries (user_id, course_id, entry_date) values
+                                                         (3, 1, '2026-01-01 10:00:00'),
+                                                         (3, 4, '2026-04-01 09:30:00'),
+                                                         (3, 2, '2026-02-01 11:00:00'),
+                                                         (3, 3, '2026-03-01 12:00:00');
+
+insert into flashcards (user_id, front_text, back_text) values
+                                                            /*Студент*/
+                                                            (3, '你好', 'Привет'),
+                                                            (3, '谢谢', 'Спасибо'),
+                                                            (3, '再见', 'До свидания'),
+                                                            (3, '我爱你', 'Я тебя люблю'),
+                                                            (3, '你好吗？', 'Как дела?'),
+                                                            (3, '我很好', 'У меня всё хорошо'),
+                                                            (3, '中国', 'Китай'),
+                                                            (3, '北京', 'Пекин'),
+                                                            (3, '一', 'Один'),
+                                                            (3, '二', 'Два'),
+                                                            (3, '老师', 'Учитель'),
+                                                            (3, '学生', 'Студент'),
+                                                            (3, '学校', 'Школа'),
+                                                            (3, '书', 'Книга'),
+                                                            (3, '水', 'Вода'),
+                                                            (3, '火', 'Огонь'),
+                                                            (3, '男人', 'Мужчина'),
+                                                            (3, '女人', 'Женщина'),
+                                                            (3, '猫', 'Кошка'),
+                                                            (3, '狗', 'Собака');
+

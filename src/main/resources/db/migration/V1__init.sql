@@ -34,7 +34,7 @@ create table if not exists courses (
 
 create table if not exists lessons (
                                        id serial primary key,
-                                       lesson_order_num integer not null,
+                                       lesson_order_num integer not null check (lesson_order_num >= 1),
                                        header varchar(25) not null,
                                        description text not null,
                                        url text not null,

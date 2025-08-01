@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Slf4j
-@RestController("apiLessonController")
 @RequestMapping("/api/lessons")
 @RequiredArgsConstructor
 public class LessonController {
