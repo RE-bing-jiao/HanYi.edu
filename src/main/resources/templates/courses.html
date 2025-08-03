@@ -125,6 +125,12 @@
         </div>
     </div>
 </header>
+<div th:if="${not #strings.isEmpty(error)}" id="errorAlert" class="error-alert">
+    <span th:text="${error}"></span>
+    <button type="button" class="error-alert-close-btn" onclick="document.getElementById('errorAlert').remove()">
+        &times;
+    </button>
+</div>
 <div class="container">
     <h1 class="mb-4">Мои курсы</h1>
     <div th:if="${#lists.isEmpty(courses)}" class="alert alert-info">

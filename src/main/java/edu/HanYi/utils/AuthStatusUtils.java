@@ -1,4 +1,4 @@
-package edu.HanYi.controller.frontend.utils;
+package edu.HanYi.utils;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 @Service
-public class AuthStatus {
+public class AuthStatusUtils {
     public void addAuthStatusToModel(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         boolean isAuthenticated = auth != null && auth.isAuthenticated()

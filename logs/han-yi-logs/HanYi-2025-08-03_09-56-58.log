@@ -1,0 +1,205 @@
+2025-08-03 09:56:58.732 [HAN_YI] INFO  e.H.security.SecurityIntegrationTest - Starting SecurityIntegrationTest using Java 23.0.1 with PID 22944 (started by mayia in C:\Users\mayia\IdeaProjects\HanYi)
+2025-08-03 09:56:58.734 [HAN_YI] DEBUG e.H.security.SecurityIntegrationTest - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-08-03 09:56:58.738 [HAN_YI] INFO  e.H.security.SecurityIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2025-08-03 09:57:15.076 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-08-03 09:57:17.151 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-08-03 09:57:17.655 [HAN_YI] INFO  e.H.security.SecurityIntegrationTest - Started SecurityIntegrationTest in 20.186 seconds (process running for 33.933)
+2025-08-03 09:57:18.165 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /api/users/me
+2025-08-03 09:57:18.166 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: null
+2025-08-03 09:57:18.387 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /api/users/me
+2025-08-03 09:57:18.423 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test@mail.ru
+2025-08-03 09:57:18.431 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test@mail.ru, authorities: [ROLE_STUDENT]
+2025-08-03 09:57:18.431 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test@mail.ru
+2025-08-03 09:57:18.477 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /api/users
+2025-08-03 09:57:18.480 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Extracted user email from token: test@mail.ru
+2025-08-03 09:57:18.489 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Token is valid for user: test@mail.ru, authorities: [ROLE_ADMIN]
+2025-08-03 09:57:18.489 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Authenticated user: test@mail.ru
+2025-08-03 09:57:18.496 [HAN_YI] DEBUG edu.HanYi.controller.UserController - Fetching all users
+2025-08-03 09:57:18.509 [HAN_YI] INFO  e.HanYi.service.impl.UserServiceImpl - Fetched 4 users
+2025-08-03 09:57:18.723 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /api/auth/signin
+2025-08-03 09:57:18.723 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: null
+2025-08-03 09:57:18.738 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign in user: test@mail.ru
+2025-08-03 09:57:18.924 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - User successfully signed in: test@mail.ru
+2025-08-03 09:57:18.925 [HAN_YI] INFO  e.H.s.c.AuthenticationController - JWT cookie set for user: test@mail.ru
+2025-08-03 09:57:19.043 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /api/auth/signin
+2025-08-03 09:57:19.043 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: null
+2025-08-03 09:57:19.045 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign in user: test@mail.ru
+2025-08-03 09:57:19.135 [HAN_YI] ERROR e.H.s.s.i.AuthenticationServiceImpl - Authentication failed for user: test@mail.ru
+org.springframework.security.authentication.BadCredentialsException: Bad credentials
+2025-08-03 09:57:19.238 [HAN_YI] INFO  e.H.security.JwtAuthenticationFilter - Processing request to: /home
+2025-08-03 09:57:19.238 [HAN_YI] DEBUG e.H.security.JwtAuthenticationFilter - Extracted JWT from cookie: null
+2025-08-03 09:57:20.083 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Checking if entry exists with ID: 1
+2025-08-03 09:57:20.084 [HAN_YI] INFO  e.H.service.impl.EntryServiceImpl - Deleted entry ID: 1
+2025-08-03 09:57:20.105 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching entries for course ID: 1
+2025-08-03 09:57:20.127 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching entries for user ID: 10000
+2025-08-03 09:57:20.128 [HAN_YI] ERROR e.H.service.impl.EntryServiceImpl - User not found with ID: 10000
+2025-08-03 09:57:20.140 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Checking if entry exists for user ID: 1 and course ID: 1
+2025-08-03 09:57:20.141 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching user with ID: 1
+2025-08-03 09:57:20.142 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching course with ID: 1
+2025-08-03 09:57:20.142 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Creating new entry for user: null and course: Header
+2025-08-03 09:57:20.143 [HAN_YI] INFO  e.H.service.impl.EntryServiceImpl - Created entry ID: 1 for user ID: 1 and course ID: 1
+2025-08-03 09:57:20.153 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Checking if entry exists with ID: 10000
+2025-08-03 09:57:20.154 [HAN_YI] ERROR e.H.service.impl.EntryServiceImpl - Delete failed - entry not found with ID: 10000
+2025-08-03 09:57:20.164 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching entries for user ID: 1
+2025-08-03 09:57:20.172 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching entries for course ID: 10000
+2025-08-03 09:57:20.173 [HAN_YI] ERROR e.H.service.impl.EntryServiceImpl - Course not found with ID: 10000
+2025-08-03 09:57:20.182 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Checking if entry exists for user ID: 1 and course ID: 1
+2025-08-03 09:57:20.183 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching user with ID: 1
+2025-08-03 09:57:20.183 [HAN_YI] ERROR e.H.service.impl.EntryServiceImpl - User not found with ID: 1
+2025-08-03 09:57:20.194 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Found entry ID: 1 for user ID: 1
+2025-08-03 09:57:20.203 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Checking if entry exists for user ID: 1 and course ID: 1
+2025-08-03 09:57:20.204 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching user with ID: 1
+2025-08-03 09:57:20.204 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Fetching course with ID: 1
+2025-08-03 09:57:20.205 [HAN_YI] ERROR e.H.service.impl.EntryServiceImpl - Course not found with ID: 1
+2025-08-03 09:57:20.214 [HAN_YI] ERROR e.H.service.impl.EntryServiceImpl - Entry not found with ID: 10000
+2025-08-03 09:57:20.221 [HAN_YI] DEBUG e.H.service.impl.EntryServiceImpl - Checking if entry exists for user ID: 1 and course ID: 1
+2025-08-03 09:57:20.222 [HAN_YI] ERROR e.H.service.impl.EntryServiceImpl - Entry already exists for user ID: 1 and course ID: 1
+2025-08-03 09:57:20.254 [HAN_YI] DEBUG edu.HanYi.controller.UserController - Fetching user ID: 1
+2025-08-03 09:57:20.461 [HAN_YI] INFO  edu.HanYi.controller.UserController - Creating new user with username: user123
+2025-08-03 09:57:20.501 [HAN_YI] INFO  edu.HanYi.controller.UserController - Deleting user ID: 100
+2025-08-03 09:57:20.612 [HAN_YI] DEBUG edu.HanYi.controller.UserController - Fetching all users
+2025-08-03 09:57:20.654 [HAN_YI] INFO  edu.HanYi.controller.UserController - Deleting user ID: 1
+2025-08-03 09:57:20.715 [HAN_YI] DEBUG edu.HanYi.controller.UserController - Fetching user ID: 100
+2025-08-03 09:57:20.749 [HAN_YI] INFO  edu.HanYi.controller.UserController - Updating user ID: 1
+2025-08-03 09:57:20.907 [HAN_YI] DEBUG e.H.s.impl.FlashcardServiceImpl - Checking flashcard existence ID: 10000
+2025-08-03 09:57:20.907 [HAN_YI] ERROR e.H.s.impl.FlashcardServiceImpl - Flashcard not found with ID: 10000
+2025-08-03 09:57:20.913 [HAN_YI] DEBUG e.H.s.impl.FlashcardServiceImpl - Fetching flashcard ID: 1
+2025-08-03 09:57:20.919 [HAN_YI] DEBUG e.H.s.impl.FlashcardServiceImpl - Fetching flashcard ID: 10000
+2025-08-03 09:57:20.920 [HAN_YI] ERROR e.H.s.impl.FlashcardServiceImpl - Flashcard not found with ID: 10000
+2025-08-03 09:57:20.928 [HAN_YI] INFO  e.H.s.impl.FlashcardServiceImpl - Created flashcard ID: 1 for user ID: 1
+2025-08-03 09:57:20.934 [HAN_YI] ERROR e.H.s.impl.FlashcardServiceImpl - Flashcard not found with ID: 10000
+2025-08-03 09:57:20.942 [HAN_YI] ERROR e.H.s.impl.FlashcardServiceImpl - User not found with ID: 1
+2025-08-03 09:57:20.947 [HAN_YI] DEBUG e.H.s.impl.FlashcardServiceImpl - Checking flashcard existence ID: 1
+2025-08-03 09:57:20.948 [HAN_YI] INFO  e.H.s.impl.FlashcardServiceImpl - Deleted flashcard ID: 1
+2025-08-03 09:57:20.955 [HAN_YI] ERROR e.H.s.impl.FlashcardServiceImpl - User not found with ID: 1
+2025-08-03 09:57:20.963 [HAN_YI] INFO  e.H.s.impl.FlashcardServiceImpl - Updated flashcard ID: 1
+2025-08-03 09:57:20.972 [HAN_YI] ERROR e.H.s.impl.FlashcardServiceImpl - User not found with ID: 10000
+2025-08-03 09:57:20.980 [HAN_YI] DEBUG e.H.s.impl.FlashcardServiceImpl - Fetching flashcards for user ID: 1
+2025-08-03 09:57:21.100 [HAN_YI] INFO  e.H.service.impl.CategoryServiceImpl - Updated category ID: 1, new name: New Name
+2025-08-03 09:57:21.106 [HAN_YI] ERROR e.H.service.impl.CategoryServiceImpl - Delete failed - category not found with ID: 10000
+2025-08-03 09:57:21.112 [HAN_YI] ERROR e.H.service.impl.CategoryServiceImpl - Update failed - name already exists: Existing Name
+2025-08-03 09:57:21.117 [HAN_YI] DEBUG e.H.service.impl.CategoryServiceImpl - Found category: Name
+2025-08-03 09:57:21.122 [HAN_YI] DEBUG e.H.service.impl.CategoryServiceImpl - Checking if category exists with name: Name
+2025-08-03 09:57:21.123 [HAN_YI] ERROR e.H.service.impl.CategoryServiceImpl - Category already exists: Name
+2025-08-03 09:57:21.132 [HAN_YI] DEBUG e.H.service.impl.CategoryServiceImpl - Checking if category exists with name: Name
+2025-08-03 09:57:21.133 [HAN_YI] DEBUG e.H.service.impl.CategoryServiceImpl - Creating new category: Name
+2025-08-03 09:57:21.133 [HAN_YI] INFO  e.H.service.impl.CategoryServiceImpl - Created category ID: 1, name: Name
+2025-08-03 09:57:21.138 [HAN_YI] ERROR e.H.service.impl.CategoryServiceImpl - Category not found with ID: 10000
+2025-08-03 09:57:21.143 [HAN_YI] INFO  e.H.service.impl.CategoryServiceImpl - Deleted category ID: 1
+2025-08-03 09:57:21.235 [HAN_YI] DEBUG e.H.controller.CategoryController - Fetching category by ID: 100
+2025-08-03 09:57:21.248 [HAN_YI] INFO  e.H.controller.CategoryController - Deleting category ID: 1
+2025-08-03 09:57:21.263 [HAN_YI] DEBUG e.H.controller.CategoryController - Fetching all categories
+2025-08-03 09:57:21.263 [HAN_YI] INFO  e.H.controller.CategoryController - Fetched 2 categories
+2025-08-03 09:57:21.312 [HAN_YI] INFO  e.H.controller.CategoryController - Deleting category ID: 100
+2025-08-03 09:57:21.335 [HAN_YI] INFO  e.H.controller.CategoryController - Creating category with name: Beginner
+2025-08-03 09:57:21.393 [HAN_YI] INFO  e.H.controller.CategoryController - Updating category ID: 1, new name: Beginner
+2025-08-03 09:57:21.412 [HAN_YI] DEBUG e.H.controller.CategoryController - Fetching category by ID: 1
+2025-08-03 09:57:21.531 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Checking course existence ID: 1
+2025-08-03 09:57:21.537 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Checking lesson existence ID: 10000
+2025-08-03 09:57:21.538 [HAN_YI] ERROR e.H.service.impl.LessonServiceImpl - Lesson not found: ID=10000
+2025-08-03 09:57:21.543 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Checking lesson existence: header=Lesson Header, courseId=1
+2025-08-03 09:57:21.543 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Fetching course ID: 1
+2025-08-03 09:57:21.544 [HAN_YI] ERROR e.H.service.impl.LessonServiceImpl - Course not found: ID=1
+2025-08-03 09:57:21.548 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Checking course existence ID: 10000
+2025-08-03 09:57:21.549 [HAN_YI] ERROR e.H.service.impl.LessonServiceImpl - Course not found: ID=10000
+2025-08-03 09:57:21.554 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Checking lesson existence: header=Lesson Header, courseId=1
+2025-08-03 09:57:21.555 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Fetching course ID: 1
+2025-08-03 09:57:21.556 [HAN_YI] INFO  e.H.service.impl.LessonServiceImpl - Created lesson ID: 1, header: Lesson Header, courseId: 1
+2025-08-03 09:57:21.568 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Checking lesson existence: header=Lesson Header, courseId=1
+2025-08-03 09:57:21.568 [HAN_YI] ERROR e.H.service.impl.LessonServiceImpl - Lesson already exists: header=Lesson Header, courseId=1
+2025-08-03 09:57:21.576 [HAN_YI] DEBUG e.H.service.impl.LessonServiceImpl - Checking lesson existence ID: 1
+2025-08-03 09:57:21.577 [HAN_YI] INFO  e.H.service.impl.LessonServiceImpl - Deleted lesson ID: 1
+2025-08-03 09:57:21.586 [HAN_YI] INFO  e.H.service.impl.LessonServiceImpl - Updated lesson ID: 1
+2025-08-03 09:57:21.592 [HAN_YI] ERROR e.H.service.impl.LessonServiceImpl - Lesson not found: ID=10000
+2025-08-03 09:57:21.600 [HAN_YI] ERROR e.H.service.impl.LessonServiceImpl - Course not found: ID=1
+2025-08-03 09:57:21.608 [HAN_YI] ERROR e.H.service.impl.LessonServiceImpl - Lesson not found: ID=10000
+2025-08-03 09:57:21.624 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Checking if course exists with header: Header
+2025-08-03 09:57:21.624 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching category with ID: 1
+2025-08-03 09:57:21.625 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Creating new course: Header
+2025-08-03 09:57:21.626 [HAN_YI] INFO  e.H.service.impl.CourseServiceImpl - Created course ID: 1, header: Header
+2025-08-03 09:57:21.635 [HAN_YI] INFO  e.H.service.impl.CourseServiceImpl - Deleted course ID: 1
+2025-08-03 09:57:21.643 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching courses for category ID: 1
+2025-08-03 09:57:21.644 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Category exists, fetching courses
+2025-08-03 09:57:21.644 [HAN_YI] INFO  e.H.service.impl.CourseServiceImpl - Found 1 courses for category ID: 1
+2025-08-03 09:57:21.654 [HAN_YI] ERROR e.H.service.impl.CourseServiceImpl - Course not found with ID: 10000
+2025-08-03 09:57:21.665 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching course for update ID: 1
+2025-08-03 09:57:21.667 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Checking header availability: New Header
+2025-08-03 09:57:21.668 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching category with ID: 10000
+2025-08-03 09:57:21.670 [HAN_YI] ERROR e.H.service.impl.CourseServiceImpl - Update failed - category not found with ID: 10000
+2025-08-03 09:57:21.679 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Checking if course exists with header: Header
+2025-08-03 09:57:21.679 [HAN_YI] ERROR e.H.service.impl.CourseServiceImpl - Course already exists with header: Header
+2025-08-03 09:57:21.686 [HAN_YI] ERROR e.H.service.impl.CourseServiceImpl - Delete failed - course not found with ID: 10000
+2025-08-03 09:57:21.694 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching course for update ID: 1
+2025-08-03 09:57:21.694 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Checking header availability: New Header
+2025-08-03 09:57:21.695 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching category with ID: 1
+2025-08-03 09:57:21.696 [HAN_YI] INFO  e.H.service.impl.CourseServiceImpl - Updated course ID: 1, new header: New Header
+2025-08-03 09:57:21.703 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Checking if course exists with header: Header
+2025-08-03 09:57:21.704 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching category with ID: 1
+2025-08-03 09:57:21.704 [HAN_YI] ERROR e.H.service.impl.CourseServiceImpl - Category not found with ID: 1
+2025-08-03 09:57:21.714 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching courses for category ID: 10000
+2025-08-03 09:57:21.714 [HAN_YI] ERROR e.H.service.impl.CourseServiceImpl - Category not found with ID: 10000
+2025-08-03 09:57:21.721 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Fetching course for update ID: 1
+2025-08-03 09:57:21.723 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Checking header availability: Existing Header
+2025-08-03 09:57:21.724 [HAN_YI] ERROR e.H.service.impl.CourseServiceImpl - Update failed - header already exists: Existing Header
+2025-08-03 09:57:21.730 [HAN_YI] DEBUG e.H.service.impl.CourseServiceImpl - Found course: Header
+2025-08-03 09:57:21.852 [HAN_YI] INFO  e.HanYi.controller.CourseController - Deleting course ID: 1
+2025-08-03 09:57:21.871 [HAN_YI] DEBUG e.HanYi.controller.CourseController - Fetching course by ID: 100
+2025-08-03 09:57:21.948 [HAN_YI] INFO  e.HanYi.controller.CourseController - Creating course with header: Beginner
+2025-08-03 09:57:21.982 [HAN_YI] DEBUG e.HanYi.controller.CourseController - Fetching course by ID: 1
+2025-08-03 09:57:22.023 [HAN_YI] INFO  e.HanYi.controller.CourseController - Fetched 1 courses for category ID: 1
+2025-08-03 09:57:22.171 [HAN_YI] INFO  e.HanYi.controller.CourseController - Deleting course ID: 100
+2025-08-03 09:57:22.208 [HAN_YI] INFO  e.HanYi.controller.CourseController - Updating course ID: 1, new header: Updated Header
+2025-08-03 09:57:22.240 [HAN_YI] DEBUG e.HanYi.controller.CourseController - Fetching all courses
+2025-08-03 09:57:22.240 [HAN_YI] INFO  e.HanYi.controller.CourseController - Fetched 2 courses
+2025-08-03 09:57:22.374 [HAN_YI] DEBUG e.HanYi.controller.EntryController - Fetching entry by ID: 100
+2025-08-03 09:57:22.413 [HAN_YI] INFO  e.HanYi.controller.EntryController - Deleting entry ID: 1
+2025-08-03 09:57:22.432 [HAN_YI] DEBUG e.HanYi.controller.EntryController - Fetching all entries
+2025-08-03 09:57:22.432 [HAN_YI] INFO  e.HanYi.controller.EntryController - Fetched 2 entries
+2025-08-03 09:57:22.454 [HAN_YI] INFO  e.HanYi.controller.EntryController - Fetched 1 entries for course ID: 1
+2025-08-03 09:57:22.471 [HAN_YI] INFO  e.HanYi.controller.EntryController - Deleting entry ID: 100
+2025-08-03 09:57:22.509 [HAN_YI] INFO  e.HanYi.controller.EntryController - Creating entry for user ID: 1 and course ID: 1
+2025-08-03 09:57:22.526 [HAN_YI] INFO  e.HanYi.controller.EntryController - Fetched 1 entries for user ID: 1
+2025-08-03 09:57:22.563 [HAN_YI] DEBUG e.HanYi.controller.EntryController - Fetching entry by ID: 1
+2025-08-03 09:57:22.880 [HAN_YI] INFO  e.H.controller.FlashcardController - Deleting flashcard ID: 1
+2025-08-03 09:57:22.919 [HAN_YI] INFO  e.H.controller.FlashcardController - Updating flashcard ID: 1
+2025-08-03 09:57:22.938 [HAN_YI] INFO  e.H.controller.FlashcardController - Creating flashcard for user ID: 1
+2025-08-03 09:57:23.007 [HAN_YI] DEBUG e.H.controller.FlashcardController - Request received for flashcards by user ID: 1
+2025-08-03 09:57:23.033 [HAN_YI] DEBUG e.H.controller.FlashcardController - Request received for flashcards by user ID: 10000
+2025-08-03 09:57:23.051 [HAN_YI] INFO  e.H.controller.FlashcardController - Deleting flashcard ID: 100
+2025-08-03 09:57:23.103 [HAN_YI] DEBUG e.H.controller.FlashcardController - Fetching all flashcards
+2025-08-03 09:57:23.118 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking new username availability: user
+2025-08-03 09:57:23.118 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking new email availability: existing@mail.ru
+2025-08-03 09:57:23.118 [HAN_YI] ERROR e.HanYi.service.impl.UserServiceImpl - Email already exists: existing@mail.ru
+2025-08-03 09:57:23.123 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking username availability: user
+2025-08-03 09:57:23.124 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking email availability: test@mail.ru
+2025-08-03 09:57:23.124 [HAN_YI] INFO  e.HanYi.service.impl.UserServiceImpl - Created user ID: 1, username: test@mail.ru
+2025-08-03 09:57:23.128 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking username availability: user
+2025-08-03 09:57:23.128 [HAN_YI] ERROR e.HanYi.service.impl.UserServiceImpl - Username already exists: user
+2025-08-03 09:57:23.135 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking new username availability: existinguser
+2025-08-03 09:57:23.135 [HAN_YI] ERROR e.HanYi.service.impl.UserServiceImpl - Username already exists: existinguser
+2025-08-03 09:57:23.139 [HAN_YI] ERROR e.HanYi.service.impl.UserServiceImpl - User not found: ID=10000
+2025-08-03 09:57:23.143 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking new username availability: new_username
+2025-08-03 09:57:23.144 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking new email availability: new@mail.ru
+2025-08-03 09:57:23.144 [HAN_YI] INFO  e.HanYi.service.impl.UserServiceImpl - Updated user ID: 1
+2025-08-03 09:57:23.148 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking username availability: user
+2025-08-03 09:57:23.148 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking email availability: test@mail.ru
+2025-08-03 09:57:23.148 [HAN_YI] ERROR e.HanYi.service.impl.UserServiceImpl - Email already exists: test@mail.ru
+2025-08-03 09:57:23.153 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking user existence ID: 10000
+2025-08-03 09:57:23.154 [HAN_YI] ERROR e.HanYi.service.impl.UserServiceImpl - User not found: ID=10000
+2025-08-03 09:57:23.161 [HAN_YI] ERROR e.HanYi.service.impl.UserServiceImpl - User not found: ID=10000
+2025-08-03 09:57:23.164 [HAN_YI] DEBUG e.HanYi.service.impl.UserServiceImpl - Checking user existence ID: 1
+2025-08-03 09:57:23.165 [HAN_YI] INFO  e.HanYi.service.impl.UserServiceImpl - Deleted user ID: 1
+2025-08-03 09:57:23.173 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign up user: test@mail.ru
+2025-08-03 09:57:23.173 [HAN_YI] WARN  e.H.s.s.i.AuthenticationServiceImpl - Signup failed - email already exists: test@mail.ru
+2025-08-03 09:57:23.178 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign in user: test@mail.ru
+2025-08-03 09:57:23.178 [HAN_YI] ERROR e.H.s.s.i.AuthenticationServiceImpl - Authentication failed for user: test@mail.ru
+org.springframework.security.authentication.BadCredentialsException: Invalid credentials
+2025-08-03 09:57:23.252 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign up user: test@mail.ru
+2025-08-03 09:57:23.253 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - User created successfully: test@mail.ru
+2025-08-03 09:57:23.254 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - JWT token generated for user: test@mail.ru
+2025-08-03 09:57:23.263 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign up user: test@mail.ru
+2025-08-03 09:57:23.263 [HAN_YI] WARN  e.H.s.s.i.AuthenticationServiceImpl - Signup failed - username already exists: testuser
+2025-08-03 09:57:23.269 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign in user: test@mail.ru
+2025-08-03 09:57:23.270 [HAN_YI] ERROR e.H.s.s.i.AuthenticationServiceImpl - User not found after successful authentication: test@mail.ru
+2025-08-03 09:57:23.277 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - Attempting to sign in user: test@mail.ru
+2025-08-03 09:57:23.278 [HAN_YI] INFO  e.H.s.s.i.AuthenticationServiceImpl - User successfully signed in: test@mail.ru

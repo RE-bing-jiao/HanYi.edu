@@ -27,6 +27,12 @@
 </head>
 
 	<body class="no-trans">
+	<div th:if="${not #strings.isEmpty(success)}" id="successAlert" class="success-alert">
+		<span th:text="${success}"></span>
+		<button type="button" class="error-alert-close-btn" onclick="document.getElementById('successAlert').remove()">
+			&times;
+		</button>
+	</div>
 		<!-- scrollToTop --> 
 		<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
 

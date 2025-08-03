@@ -2,7 +2,7 @@ package edu.HanYi.AI.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.HanYi.AI.dto.DeepSeekResponse;
-import edu.HanYi.controller.frontend.utils.AuthStatus;
+import edu.HanYi.utils.AuthStatusUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +23,7 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 public class DeepSeekController {
-    private final AuthStatus authStatus;
+    private final AuthStatusUtils authStatus;
     private static final String DEEPSEEK_API_URL = "https://api.deepseek.com/chat/completions";
 
     @Value("${deepseek.api.key}")

@@ -15,6 +15,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
@@ -36,6 +38,9 @@ class AuthenticationControllerTest {
 
     @Mock
     private UserRepository userRepository;
+
+    @Mock
+    AuthenticationManager authenticationManager;
 
     @Mock
     private PasswordEncoder passwordEncoder;
@@ -102,6 +107,10 @@ class AuthenticationControllerTest {
         UserDetails userDetails = mock(UserDetails.class);
         when(userService.userDetailsService()).thenReturn(email -> userDetails);
         when(jwtService.generateToken(anyMap(), any(UserDetails.class))).thenReturn("testToken");
+
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any(Authentication.class))).thenReturn(authentication);
 
         mockMvc.perform(post("/api/auth/signin")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)

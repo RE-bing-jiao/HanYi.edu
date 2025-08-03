@@ -24,20 +24,6 @@
     <link rel="stylesheet" th:href="@{/css/custom.css}">
 
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <style>
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
-        }
-        .card-title {
-            font-size: 1.8rem;
-            margin-bottom: 0.75rem;
-        }
-    </style>
 </head>
 
 <body class="no-trans">
@@ -126,11 +112,17 @@
     </div>
 </header>
 
+<div th:if="${not #strings.isEmpty(error)}" id="errorAlert" class="error-alert">
+    <span th:text="${error}"></span>
+    <button type="button" class="error-alert-close-btn" onclick="document.getElementById('errorAlert').remove()">
+        &times;
+    </button>
+</div>
+
 <div class="container mt-4">
     <h1>Все курсы</h1>
-
     <div class="mb-5 py-3">
-        <a th:href="@{/courses-info}" class="btn btn-primary mr-3 mb-2">Все категории</a>  <
+        <a th:href="@{/courses-info}" class="btn btn-primary mr-3 mb-2">Все категории</a>
         <th:block th:each="category : ${categories}">
             <a th:href="@{/courses-info(categoryId=${category.id})}" class="btn btn-outline-primary mr-3 mb-2" th:text="${category.name}"></a>
         </th:block>
@@ -158,9 +150,6 @@
                     <div class="modal-content">
                         <div class="modal-header align-items-center">
                             <h4 class="modal-title mb-0" th:text="${course.header}"></h4>
-                            <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close" style="margin: -1rem -1rem -1rem auto;">
-                                <span aria-hidden="true">×</span>
-                            </button>
                         </div>
                         <div class="modal-body">
                             <div class="row">

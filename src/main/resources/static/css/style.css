@@ -1243,3 +1243,53 @@ button {
 	padding-right: 5px;
 	margin-bottom: 10px;
 }
+
+/*ERRORS AND OTHER*/
+.error-alert {
+	z-index: 1001;
+	position: relative;
+	padding: 0.75rem 1.25rem;
+	margin: 1rem auto;
+	background-color: #D62246;
+	color: white;
+	border-radius: 0.25rem;
+	display: inline-block;
+	width: 80%;
+	text-align: center;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.error-alert-close-btn {
+	position: absolute;
+	top: 50%;
+	right: 0.75rem;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+	padding: 0;
+	line-height: 1;
+}
+
+.error-alert-close-btn:hover {
+	opacity: 0.8;
+}
+
+.success-alert {
+	top: 90px;
+	z-index: 1050;
+	position: relative;
+	padding: 0.75rem 1.25rem;
+	margin: 1rem auto;
+	background-color: #7B9928;
+	color: white;
+	border-radius: 0.25rem;
+	display: inline-block;
+	width: 80%;
+	text-align: center;
+	left: 50%;
+	transform: translateX(-50%);
+}

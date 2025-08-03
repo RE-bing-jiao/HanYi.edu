@@ -1,6 +1,6 @@
 package edu.HanYi.controller.frontend;
 
-import edu.HanYi.controller.frontend.utils.AuthStatus;
+import edu.HanYi.utils.AuthStatusUtils;
 import edu.HanYi.dto.response.CourseResponse;
 import edu.HanYi.exception.ResourceNotFoundException;
 import edu.HanYi.model.User;
@@ -19,13 +19,19 @@ import java.util.List;
 @RequestMapping("/courses")
 @RequiredArgsConstructor
 public class CoursePageController {
-    private final AuthStatus authStatus;
+    private final AuthStatusUtils authStatus;
     private final CourseService courseService;
     private final UserRepository userRepository;
 
     @GetMapping
-    public String getUserCourses(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String getUserCourses(@AuthenticationPrincipal UserDetails userDetails,
+                                 Model model,
+                                 @ModelAttribute("error") String error) {
         authStatus.addAuthStatusToModel(model);
+
+        if (!error.isEmpty()) {
+            model.addAttribute("error", error);
+        }
 
         User user = userRepository.findByEmail(userDetails.getUsername())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));

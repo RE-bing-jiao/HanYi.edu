@@ -1,6 +1,6 @@
 package edu.HanYi.controller.frontend;
 
-import edu.HanYi.controller.frontend.utils.AuthStatus;
+import edu.HanYi.utils.AuthStatusUtils;
 import edu.HanYi.dto.response.FlashcardResponse;
 import edu.HanYi.exception.ResourceNotFoundException;
 import edu.HanYi.model.User;
@@ -27,7 +27,7 @@ import java.util.List;
 public class FlashcardPageController {
     private final FlashcardService flashcardService;
     private final UserRepository userRepository;
-    private final AuthStatus authStatus;
+    private final AuthStatusUtils authStatus;
 
     @GetMapping
     public String getUserFlashcards(@AuthenticationPrincipal UserDetails userDetails,
