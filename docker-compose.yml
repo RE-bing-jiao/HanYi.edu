@@ -1,0 +1,47 @@
+services:
+  postgres:
+    image: postgres:15
+    restart: unless-stopped
+    container_name: Postgres_DB
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: chinese_courses_webapp
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d chinese_courses_webapp"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer
+    container_name: Adminer_UI
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8088:8080"
+
+  webapp:
+    build: .
+    container_name: HanYi_App
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/chinese_courses_webapp
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: "1234"
+      SPRING_FLYWAY_ENABLED: "true"
+    restart: unless-stopped
+
+    volumes:
+      - app_logs:/app/logs/han-yi-logs
+
+volumes:
+  postgres_data:
+  app_logs:
