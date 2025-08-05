@@ -1279,7 +1279,6 @@ button {
 }
 
 .success-alert {
-	top: 90px;
 	z-index: 1050;
 	position: relative;
 	padding: 0.75rem 1.25rem;

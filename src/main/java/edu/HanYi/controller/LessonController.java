@@ -17,6 +17,7 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/api/lessons")
 @RequiredArgsConstructor
+@RestController
 public class LessonController {
     private static final Marker TO_CONSOLE = MarkerFactory.getMarker("TO_CONSOLE");
     private final LessonService lessonService;

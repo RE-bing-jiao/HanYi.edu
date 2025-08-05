@@ -102,7 +102,7 @@
 			<version>1.9.3</version>
 			<scope>test</scope>
 		</dependency>
-<!---->
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -144,17 +144,24 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
-		<!-- CommonMark (для Markdown → HTML) -->
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
+
+		<!-- CommonMark -->
 		<dependency>
 			<groupId>org.commonmark</groupId>
 			<artifactId>commonmark</artifactId>
 			<version>0.21.0</version>
 		</dependency>
 
-	<dependency>
-		<groupId>org.thymeleaf.extras</groupId>
-		<artifactId>thymeleaf-extras-springsecurity6</artifactId>
-	</dependency>
+		<!--Docker-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-docker-compose</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -27,12 +27,6 @@
 </head>
 
 	<body class="no-trans">
-	<div th:if="${not #strings.isEmpty(success)}" id="successAlert" class="success-alert">
-		<span th:text="${success}"></span>
-		<button type="button" class="error-alert-close-btn" onclick="document.getElementById('successAlert').remove()">
-			&times;
-		</button>
-	</div>
 		<!-- scrollToTop --> 
 		<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
 
@@ -115,6 +109,12 @@
 
 					</div>
 				</div>
+			</div>
+			<div th:if="${not #strings.isEmpty(success)}" id="successAlert" class="success-alert">
+				<span th:text="${success}"></span>
+				<button type="button" class="error-alert-close-btn" onclick="document.getElementById('successAlert').remove()">
+					&times;
+				</button>
 			</div>
 		</header>
 		<!-- header end -->
@@ -484,22 +484,33 @@
 
 						<div class="col-sm-6">
 							<div class="footer-content">
-								<form role="form" id="footer-form" style="background-color: #dcdcdc; padding: 20px; border-radius: 8px;">
-								<div class="form-group has-feedback">
-										<label class="sr-only" for="name2">Name</label>
-										<input type="text" class="form-control" id="name2" placeholder="Имя" name="name2" required>
+								<form th:action="@{/submit-contact}" method="post" role="form" id="footer-form"
+									  style="background-color: #dcdcdc; padding: 20px; border-radius: 8px;">
+
+									<div class="form-group has-feedback">
+										<label class="sr-only" for="name">Name</label>
+										<input type="text" class="form-control" id="name"
+											   placeholder="Имя" name="name" required
+											   th:value="${name}">
 										<i class="fa fa-user form-control-feedback"></i>
 									</div>
+
 									<div class="form-group has-feedback">
-										<label class="sr-only" for="email2">Email address</label>
-										<input type="email" class="form-control" id="email2" placeholder="Адрес электронной почты" name="email2" required>
+										<label class="sr-only" for="email">Email address</label>
+										<input type="email" class="form-control" id="email"
+											   placeholder="Адрес электронной почты" name="email" required
+											   th:value="${email}">
 										<i class="fa fa-envelope form-control-feedback"></i>
 									</div>
+
 									<div class="form-group has-feedback">
-										<label class="sr-only" for="message2">Message</label>
-										<textarea class="form-control" rows="8" id="message2" placeholder="Дополнительные данные" name="message2" required></textarea>
+										<label class="sr-only" for="message">Message</label>
+										<textarea class="form-control" rows="8" id="message"
+												  placeholder="Дополнительные данные" name="message"
+												  th:text="${message}"></textarea>
 										<i class="fa fa-pencil form-control-feedback"></i>
 									</div>
+
 									<input type="submit" value="Отправить" class="btn btn-default" style="color: white">
 								</form>
 							</div>
