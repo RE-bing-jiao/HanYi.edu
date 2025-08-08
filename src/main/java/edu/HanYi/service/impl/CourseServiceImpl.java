@@ -1,5 +1,6 @@
 package edu.HanYi.service.impl;
 
+import edu.HanYi.constants.LoggingConstants;
 import edu.HanYi.dto.request.CourseCreateRequest;
 import edu.HanYi.dto.response.CourseResponse;
 import edu.HanYi.exception.ResourceAlreadyExistsException;
@@ -11,7 +12,6 @@ import edu.HanYi.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,27 +21,27 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService {
-    private static final Marker TO_CONSOLE = MarkerFactory.getMarker("TO_CONSOLE");
+    private static final Marker TO_CONSOLE = LoggingConstants.TO_CONSOLE;
     private final CourseRepository courseRepository;
     private final CategoryRepository categoryRepository;
 
     @Override
     @Transactional
     public CourseResponse createCourse(CourseCreateRequest request) {
-        log.debug("Checking if course exists with header: {}", request.header());
+        log.debug(LoggingConstants.DEBUG_CHECK_HEADER, request.header());
         if (courseRepository.existsByHeader(request.header())) {
-            log.error(TO_CONSOLE, "Course already exists with header: {}", request.header());
+            log.error(TO_CONSOLE, LoggingConstants.COURSE_EXISTS_HEADER, request.header());
             throw new ResourceAlreadyExistsException("Course with header '" + request.header() + "' already exists");
         }
 
-        log.debug("Fetching category with ID: {}", request.categoryId());
+        log.debug(LoggingConstants.DEBUG_FETCH_CATEGORY, request.categoryId());
         Category category = categoryRepository.findById(request.categoryId())
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "Category not found with ID: {}", request.categoryId());
+                    log.error(TO_CONSOLE, LoggingConstants.CATEGORY_NOT_FOUND_ID, request.categoryId());
                     return new ResourceNotFoundException("Category not found with id: " + request.categoryId());
                 });
 
-        log.debug("Creating new course: {}", request.header());
+        log.debug(LoggingConstants.DEBUG_CREATE_COURSE, request.header());
         Course course = new Course();
         course.setHeader(request.header());
         course.setDescription(request.description());
@@ -51,7 +51,7 @@ public class CourseServiceImpl implements CourseService {
         course.setProgress(request.progress());
 
         Course savedCourse = courseRepository.save(course);
-        log.info(TO_CONSOLE, "Created course ID: {}, header: {}", savedCourse.getId(), savedCourse.getHeader());
+        log.info(TO_CONSOLE, LoggingConstants.COURSE_CREATED, savedCourse.getId(), savedCourse.getHeader());
         return mapToResponse(savedCourse);
     }
 
@@ -68,25 +68,25 @@ public class CourseServiceImpl implements CourseService {
     public CourseResponse getCourseById(Integer id) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "Course not found with ID: {}", id);
+                    log.error(TO_CONSOLE, LoggingConstants.COURSE_NOT_FOUND_ID, id);
                     return new ResourceNotFoundException("Course not found with id: " + id);
                 });
-        log.debug("Found course: {}", course.getHeader());
+        log.debug(LoggingConstants.DEBUG_FETCH_COURSE, course.getHeader());
         return mapToResponse(course);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<CourseResponse> getCoursesByCategoryId(Integer categoryId) {
-        log.debug("Fetching courses for category ID: {}", categoryId);
+        log.debug(LoggingConstants.DEBUG_FETCH_COURSES_CATEGORY, categoryId);
         if (!categoryRepository.existsById(categoryId)) {
-            log.error(TO_CONSOLE, "Category not found with ID: {}", categoryId);
+            log.error(TO_CONSOLE, LoggingConstants.CATEGORY_NOT_FOUND_ID, categoryId);
             throw new ResourceNotFoundException("Category not found with id: " + categoryId);
         }
 
-        log.debug("Category exists, fetching courses");
+        log.debug(LoggingConstants.DEBUG_CATEGORY_EXISTS);
         List<Course> courses = courseRepository.findByCategoryId(categoryId);
-        log.info(TO_CONSOLE, "Found {} courses for category ID: {}", courses.size(), categoryId);
+        log.info(TO_CONSOLE, LoggingConstants.COURSES_FOUND_CATEGORY, courses.size(), categoryId);
         return courses.stream()
                 .map(this::mapToResponse)
                 .toList();
@@ -95,26 +95,26 @@ public class CourseServiceImpl implements CourseService {
     @Override
     @Transactional
     public CourseResponse updateCourse(Integer id, CourseCreateRequest request) {
-        log.debug("Fetching course for update ID: {}", id);
+        log.debug(LoggingConstants.DEBUG_FETCH_COURSE_UPDATE, id);
         Course course = courseRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "Update failed - course not found with ID: {}", id);
+                    log.error(TO_CONSOLE, LoggingConstants.COURSE_UPDATE_FAILED, id);
                     return new ResourceNotFoundException("Course not found with id: " + id);
                 });
 
         if (!course.getHeader().equals(request.header())) {
-            log.debug("Checking header availability: {}", request.header());
+            log.debug(LoggingConstants.DEBUG_CHECK_HEADER_AVAILABILITY, request.header());
             if (courseRepository.existsByHeader(request.header())) {
-                log.error(TO_CONSOLE, "Update failed - header already exists: {}", request.header());
+                log.error(TO_CONSOLE, LoggingConstants.COURSE_UPDATE_FAILED_HEADER, request.header());
                 throw new ResourceAlreadyExistsException("Course with header '" + request.header() + "' already exists");
             }
             course.setHeader(request.header());
         }
 
-        log.debug("Fetching category with ID: {}", request.categoryId());
+        log.debug(LoggingConstants.DEBUG_FETCH_CATEGORY, request.categoryId());
         Category category = categoryRepository.findById(request.categoryId())
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "Update failed - category not found with ID: {}", request.categoryId());
+                    log.error(TO_CONSOLE, LoggingConstants.COURSE_UPDATE_FAILED_CATEGORY, request.categoryId());
                     return new ResourceNotFoundException("Category not found with id: " + request.categoryId());
                 });
 
@@ -125,7 +125,7 @@ public class CourseServiceImpl implements CourseService {
         course.setProgress(request.progress());
 
         Course updatedCourse = courseRepository.save(course);
-        log.info(TO_CONSOLE, "Updated course ID: {}, new header: {}", id, request.header());
+        log.info(TO_CONSOLE, LoggingConstants.COURSE_UPDATED, id, request.header());
         return mapToResponse(updatedCourse);
     }
 
@@ -133,11 +133,11 @@ public class CourseServiceImpl implements CourseService {
     @Transactional
     public void deleteCourse(Integer id) {
         if (!courseRepository.existsById(id)) {
-            log.error(TO_CONSOLE, "Delete failed - course not found with ID: {}", id);
+            log.error(TO_CONSOLE, LoggingConstants.COURSE_DELETE_FAILED, id);
             throw new ResourceNotFoundException("Course not found with id: " + id);
         }
         courseRepository.deleteById(id);
-        log.info(TO_CONSOLE, "Deleted course ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.COURSE_DELETED, id);
     }
 
     private CourseResponse mapToResponse(Course course) {

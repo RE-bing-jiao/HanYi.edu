@@ -1,5 +1,6 @@
 package edu.HanYi.controller;
 
+import edu.HanYi.constants.LoggingConstants;
 import edu.HanYi.dto.request.FlashcardCreateRequest;
 import edu.HanYi.dto.response.FlashcardResponse;
 import edu.HanYi.service.FlashcardService;
@@ -19,19 +20,19 @@ import java.util.List;
 @RequestMapping("/api/flashcards")
 @RequiredArgsConstructor
 public class FlashcardController {
-    private static final Marker TO_CONSOLE = MarkerFactory.getMarker("TO_CONSOLE");
+    private static final Marker TO_CONSOLE = LoggingConstants.TO_CONSOLE;
     private final FlashcardService flashcardService;
 
     @PostMapping
     public ResponseEntity<FlashcardResponse> createFlashcard(@Valid @RequestBody FlashcardCreateRequest request) {
-        log.info(TO_CONSOLE, "Creating flashcard for user ID: {}", request.userId());
+        log.info(TO_CONSOLE, LoggingConstants.FLASHCARD_CREATE, request.userId());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(flashcardService.createFlashcard(request));
     }
 
     @GetMapping
     public ResponseEntity<List<FlashcardResponse>> getAllFlashcards() {
-        log.debug("Fetching all flashcards");
+        log.debug(LoggingConstants.FLASHCARD_FETCH);
         return ResponseEntity.ok(flashcardService.getAllFlashcards());
     }
 
@@ -42,7 +43,7 @@ public class FlashcardController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<FlashcardResponse>> getFlashcardsByUserId(@PathVariable Integer userId) {
-        log.debug("Request received for flashcards by user ID: {}", userId);
+        log.debug(LoggingConstants.FLASHCARD_FETCH, userId);
         return ResponseEntity.ok(flashcardService.getFlashcardsByUserId(userId));
     }
 
@@ -50,13 +51,13 @@ public class FlashcardController {
     public ResponseEntity<FlashcardResponse> updateFlashcard(
             @PathVariable Integer id,
             @Valid @RequestBody FlashcardCreateRequest request) {
-        log.info(TO_CONSOLE, "Updating flashcard ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.FLASHCARD_UPDATE, id);
         return ResponseEntity.ok(flashcardService.updateFlashcard(id, request));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFlashcard(@PathVariable Integer id) {
-        log.info(TO_CONSOLE, "Deleting flashcard ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.FLASHCARD_DELETE, id);
         flashcardService.deleteFlashcard(id);
         return ResponseEntity.noContent().build();
     }

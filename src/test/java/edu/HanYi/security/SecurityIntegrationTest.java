@@ -118,6 +118,7 @@ class SecurityIntegrationTest {
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                         .param("email", USER_EMAIL)
                         .param("password", "wrongpassword"))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("/signin"));
     }
 }

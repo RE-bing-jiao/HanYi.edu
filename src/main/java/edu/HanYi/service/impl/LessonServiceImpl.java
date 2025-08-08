@@ -1,5 +1,6 @@
 package edu.HanYi.service.impl;
 
+import edu.HanYi.constants.LoggingConstants;
 import edu.HanYi.dto.request.LessonCreateRequest;
 import edu.HanYi.dto.response.LessonResponse;
 import edu.HanYi.exception.ResourceAlreadyExistsException;
@@ -11,7 +12,6 @@ import edu.HanYi.service.LessonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,26 +21,24 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class LessonServiceImpl implements LessonService {
-    private static final Marker TO_CONSOLE = MarkerFactory.getMarker("TO_CONSOLE");
+    private static final Marker TO_CONSOLE = LoggingConstants.TO_CONSOLE;
     private final LessonRepository lessonRepository;
     private final CourseRepository courseRepository;
 
     @Override
     @Transactional
     public LessonResponse createLesson(LessonCreateRequest request) {
-        log.debug("Checking lesson existence: header={}, courseId={}",
-                request.header(), request.courseId());
+        log.debug(LoggingConstants.DEBUG_CHECK_LESSON_EXISTENCE, request.header(), request.courseId());
         if (lessonRepository.existsByHeaderAndCourseId(request.header(), request.courseId())) {
-            log.error(TO_CONSOLE, "Lesson already exists: header={}, courseId={}",
-                    request.header(), request.courseId());
+            log.error(TO_CONSOLE, LoggingConstants.LESSON_EXISTS, request.header(), request.courseId());
             throw new ResourceAlreadyExistsException(
                     "Lesson with header '" + request.header() + "' already exists in this course");
         }
 
-        log.debug("Fetching course ID: {}", request.courseId());
+        log.debug(LoggingConstants.DEBUG_FETCH_COURSE_LESSON, request.courseId());
         Course course = courseRepository.findById(request.courseId())
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "Course not found: ID={}", request.courseId());
+                    log.error(TO_CONSOLE, LoggingConstants.COURSE_NOT_FOUND_ID, request.courseId());
                     return new ResourceNotFoundException("Course not found with id: " + request.courseId());
                 });
 
@@ -52,8 +50,7 @@ public class LessonServiceImpl implements LessonService {
         lesson.setCourse(course);
 
         Lesson savedLesson = lessonRepository.save(lesson);
-        log.info(TO_CONSOLE, "Created lesson ID: {}, header: {}, courseId: {}",
-                savedLesson.getId(), savedLesson.getHeader(), request.courseId());
+        log.info(TO_CONSOLE, LoggingConstants.LESSON_CREATED, savedLesson.getId(), savedLesson.getHeader(), request.courseId());
         return mapToResponse(savedLesson);
     }
 
@@ -61,7 +58,7 @@ public class LessonServiceImpl implements LessonService {
     @Transactional(readOnly = true)
     public List<LessonResponse> getAllLessons() {
         List<Lesson> lessons = lessonRepository.findAll();
-        log.info(TO_CONSOLE, "Fetched {} lessons", lessons.size());
+        log.info(TO_CONSOLE, LoggingConstants.LESSONS_FETCHED, lessons.size());
         return lessons.stream()
                 .map(this::mapToResponse)
                 .toList();
@@ -72,7 +69,7 @@ public class LessonServiceImpl implements LessonService {
     public LessonResponse getLessonById(Integer id) {
         Lesson lesson = lessonRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "Lesson not found: ID={}", id);
+                    log.error(TO_CONSOLE, LoggingConstants.LESSON_NOT_FOUND_ID, id);
                     return new ResourceNotFoundException("Lesson not found with id: " + id);
                 });
         return mapToResponse(lesson);
@@ -81,9 +78,9 @@ public class LessonServiceImpl implements LessonService {
     @Override
     @Transactional(readOnly = true)
     public List<LessonResponse> getLessonsByCourseId(Integer courseId) {
-        log.debug("Checking course existence ID: {}", courseId);
+        log.debug(LoggingConstants.DEBUG_CHECK_COURSE_EXISTENCE, courseId);
         if (!courseRepository.existsById(courseId)) {
-            log.error(TO_CONSOLE, "Course not found: ID={}", courseId);
+            log.error(TO_CONSOLE, LoggingConstants.COURSE_NOT_FOUND_ID, courseId);
             throw new ResourceNotFoundException("Course not found with id: " + courseId);
         }
 
@@ -98,17 +95,15 @@ public class LessonServiceImpl implements LessonService {
     public LessonResponse updateLesson(Integer id, LessonCreateRequest request) {
         Lesson lesson = lessonRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "Lesson not found: ID={}", id);
+                    log.error(TO_CONSOLE, LoggingConstants.LESSON_NOT_FOUND_ID, id);
                     return new ResourceNotFoundException("Lesson not found with id: " + id);
                 });
 
         if (!lesson.getHeader().equals(request.header()) ||
                 !lesson.getCourse().getId().equals(request.courseId())) {
-            log.debug("Checking lesson header uniqueness: header={}, courseId={}",
-                    request.header(), request.courseId());
+            log.debug(LoggingConstants.DEBUG_CHECK_LESSON_HEADER, request.header(), request.courseId());
             if (lessonRepository.existsByHeaderAndCourseId(request.header(), request.courseId())) {
-                log.error(TO_CONSOLE, "Lesson header conflict: header={}, courseId={}",
-                        request.header(), request.courseId());
+                log.error(TO_CONSOLE, LoggingConstants.LESSON_HEADER_CONFLICT, request.header(), request.courseId());
                 throw new ResourceAlreadyExistsException(
                         "Lesson with header '" + request.header() + "' already exists in this course");
             }
@@ -116,7 +111,7 @@ public class LessonServiceImpl implements LessonService {
 
         Course course = courseRepository.findById(request.courseId())
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "Course not found: ID={}", request.courseId());
+                    log.error(TO_CONSOLE, LoggingConstants.COURSE_NOT_FOUND_ID, request.courseId());
                     return new ResourceNotFoundException("Course not found with id: " + request.courseId());
                 });
 
@@ -127,20 +122,20 @@ public class LessonServiceImpl implements LessonService {
         lesson.setCourse(course);
 
         Lesson updatedLesson = lessonRepository.save(lesson);
-        log.info(TO_CONSOLE, "Updated lesson ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.LESSON_UPDATED, id);
         return mapToResponse(updatedLesson);
     }
 
     @Override
     @Transactional
     public void deleteLesson(Integer id) {
-        log.debug("Checking lesson existence ID: {}", id);
+        log.debug(LoggingConstants.DEBUG_CHECK_LESSON_EXISTENCE_ID, id);
         if (!lessonRepository.existsById(id)) {
-            log.error(TO_CONSOLE, "Lesson not found: ID={}", id);
+            log.error(TO_CONSOLE, LoggingConstants.LESSON_NOT_FOUND_ID, id);
             throw new ResourceNotFoundException("Lesson not found with id: " + id);
         }
         lessonRepository.deleteById(id);
-        log.info(TO_CONSOLE, "Deleted lesson ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.LESSON_DELETED, id);
     }
 
     private LessonResponse mapToResponse(Lesson lesson) {

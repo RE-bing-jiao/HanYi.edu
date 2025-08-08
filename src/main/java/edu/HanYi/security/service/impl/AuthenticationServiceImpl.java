@@ -1,5 +1,6 @@
 package edu.HanYi.security.service.impl;
 
+import edu.HanYi.constants.LoggingConstants;
 import edu.HanYi.exception.ResourceAlreadyExistsException;
 import edu.HanYi.exception.ResourceNotFoundException;
 import edu.HanYi.model.User;
@@ -34,14 +35,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public JwtAuthenticationResponse signup(SignUpRequest request) {
-        log.info("Attempting to sign up user: {}", request.getEmail());
+        log.info(LoggingConstants.SIGNUP_ATTEMPT, request.getEmail());
 
         if(userRepository.findByEmail(request.getEmail()).isPresent()) {
-            log.warn("Signup failed - email already exists: {}", request.getEmail());
+            log.warn(LoggingConstants.SIGNUP_EMAIL_EXISTS, request.getEmail());
             throw new ResourceAlreadyExistsException("Email already in use");
         }
         if(userRepository.findByUsername(request.getUsername()).isPresent()) {
-            log.warn("Signup failed - username already exists: {}", request.getUsername());
+            log.warn(LoggingConstants.SIGNUP_USERNAME_EXISTS, request.getUsername());
             throw new ResourceAlreadyExistsException("Username already in use");
         }
 
@@ -51,36 +52,36 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setEmail(request.getEmail());
         user.setRole(request.getRole() != null ? request.getRole() : User.Role.STUDENT);
         userRepository.save(user);
-        log.info("User created successfully: {}", user.getEmail());
+        log.info(LoggingConstants.USER_CREATION_SUCCESS, user.getEmail());
 
         UserDetails userDetails = userService.userDetailsService().loadUserByUsername(user.getEmail());
         String token = jwtService.generateToken(new HashMap<>(), userDetails);
 
-        log.info("JWT token generated for user: {}", user.getEmail());
+        log.info(LoggingConstants.TOKEN_GENERATED, user.getEmail());
         return JwtAuthenticationResponse.builder().token(token).build();
     }
 
     @Override
     public JwtAuthenticationResponse signin(SignInRequest request) {
-        log.info("Attempting to sign in user: {}", request.getEmail());
+        log.info(LoggingConstants.SIGNIN_ATTEMPT, request.getEmail());
 
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             User user = userRepository.findByEmail(request.getEmail())
                     .orElseThrow(() -> {
-                        log.error("User not found after successful authentication: {}", request.getEmail());
+                        log.error(LoggingConstants.USER_NOT_FOUND_AFTER_AUTH, request.getEmail());
                         return new ResourceNotFoundException("User not found");
                     });
 
             UserDetails userDetails = userService.userDetailsService().loadUserByUsername(user.getEmail());
             String token = jwtService.generateToken(new HashMap<>(), userDetails);
 
-            log.info("User successfully signed in: {}", request.getEmail());
+            log.info(LoggingConstants.SIGNIN_SUCCESS, request.getEmail());
             return JwtAuthenticationResponse.builder().token(token).build();
 
         } catch (AuthenticationException e) {
-            log.error("Authentication failed for user: {}", request.getEmail(), e);
+            log.error(LoggingConstants.AUTH_FAILED, request.getEmail(), e);
             throw new BadCredentialsException("Invalid credentials");
         }
     }

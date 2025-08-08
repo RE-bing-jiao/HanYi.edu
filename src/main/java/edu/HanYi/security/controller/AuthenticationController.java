@@ -1,5 +1,6 @@
 package edu.HanYi.security.controller;
 
+import edu.HanYi.constants.LoggingConstants;
 import edu.HanYi.exception.ResourceAlreadyExistsException;
 import edu.HanYi.security.request.SignInRequest;
 import edu.HanYi.security.request.SignUpRequest;
@@ -31,11 +32,11 @@ public class AuthenticationController {
             redirectAttributes.addFlashAttribute("success", "Регистрация прошла успешно!");
             return "redirect:/home";
         } catch (ResourceAlreadyExistsException e) {
-            log.error("Signup error for email: {}", request.getEmail(), e);
+            log.error(LoggingConstants.SIGNUP_ERROR, request.getEmail(), e);
             redirectAttributes.addFlashAttribute("error", "Пользователь с таким email уже существует");
             return "redirect:/signup";
         } catch (Exception e) {
-            log.error("Unexpected signup error", e);
+            log.error(LoggingConstants.UNEXPECTED_SIGNUP_ERROR, e);
             redirectAttributes.addFlashAttribute("error", "Ошибка регистрации");
             return "redirect:/signup";
         }
@@ -56,17 +57,17 @@ public class AuthenticationController {
                     .build();
 
             response.addHeader("Set-Cookie", jwtCookie.toString());
-            log.info("JWT cookie set for user: {}", request.getEmail());
+            log.info(LoggingConstants.JWT_COOKIE_SET, request.getEmail());
 
             redirectAttributes.addFlashAttribute("success", "Вход выполнен успешно");
             return "redirect:/home";
 
         } catch (BadCredentialsException e) {
-            log.warn("Invalid login attempt for email: {}", request.getEmail());
+            log.warn(LoggingConstants.INVALID_LOGIN_ATTEMPT, request.getEmail());
             redirectAttributes.addFlashAttribute("error", "Неверный email или пароль");
             return "redirect:/signin";
         } catch (Exception e) {
-            log.error("Login error", e);
+            log.error(LoggingConstants.LOGIN_ERROR, e);
             redirectAttributes.addFlashAttribute("error", "Ошибка входа");
             return "redirect:/signin";
         }

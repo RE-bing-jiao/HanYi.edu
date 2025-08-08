@@ -1,5 +1,6 @@
 package edu.HanYi.controller;
 
+import edu.HanYi.constants.LoggingConstants;
 import edu.HanYi.service.ContactService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class ContactController {
             redirectAttributes.addFlashAttribute("message", message);
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Произошла ошибка при отправке заявки");
-            log.error("Error saving contact request", e);
+            log.error(LoggingConstants.CONTACT_ERROR, e);
         }
 
         return "redirect:/home#contact";

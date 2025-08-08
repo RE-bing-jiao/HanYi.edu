@@ -1,5 +1,6 @@
 package edu.HanYi.service.impl;
 
+import edu.HanYi.constants.LoggingConstants;
 import edu.HanYi.dto.request.UserCreateRequest;
 import edu.HanYi.dto.response.UserResponse;
 import edu.HanYi.exception.ResourceAlreadyExistsException;
@@ -10,7 +11,6 @@ import edu.HanYi.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -22,21 +22,21 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    private static final Marker TO_CONSOLE = MarkerFactory.getMarker("TO_CONSOLE");
+    private static final Marker TO_CONSOLE = LoggingConstants.TO_CONSOLE;
     private final UserRepository userRepository;
 
     @Override
     @Transactional
     public UserResponse createUser(UserCreateRequest request) {
-        log.debug("Checking username availability: {}", request.username());
+        log.debug(LoggingConstants.DEBUG_CHECK_USERNAME, request.username());
         if (userRepository.existsByUsername(request.username())) {
-            log.error(TO_CONSOLE, "Username already exists: {}", request.username());
+            log.error(TO_CONSOLE, LoggingConstants.USERNAME_EXISTS, request.username());
             throw new ResourceAlreadyExistsException("Username '" + request.username() + "' already exists");
         }
 
-        log.debug("Checking email availability: {}", request.email());
+        log.debug(LoggingConstants.DEBUG_CHECK_EMAIL, request.email());
         if (userRepository.existsByEmail(request.email())) {
-            log.error(TO_CONSOLE, "Email already exists: {}", request.email());
+            log.error(TO_CONSOLE, LoggingConstants.EMAIL_EXISTS, request.email());
             throw new ResourceAlreadyExistsException("Email '" + request.email() + "' already exists");
         }
 
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
         user.setRole(request.role());
 
         User savedUser = userRepository.save(user);
-        log.info(TO_CONSOLE, "Created user ID: {}, username: {}", savedUser.getId(), savedUser.getUsername());
+        log.info(TO_CONSOLE, LoggingConstants.USER_CREATED, savedUser.getId(), savedUser.getUsername());
         return mapToResponse(savedUser);
     }
 
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public List<UserResponse> getAllUsers() {
         List<User> users = userRepository.findAll();
-        log.info(TO_CONSOLE, "Fetched {} users", users.size());
+        log.info(TO_CONSOLE, LoggingConstants.USERS_FETCHED, users.size());
         return users.stream()
                 .map(this::mapToResponse)
                 .toList();
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse getUserById(Integer id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "User not found: ID={}", id);
+                    log.error(TO_CONSOLE, LoggingConstants.USER_NOT_FOUND_ID, id);
                     return new ResourceNotFoundException("User not found with id: " + id);
                 });
         return mapToResponse(user);
@@ -77,23 +77,23 @@ public class UserServiceImpl implements UserService {
     public UserResponse updateUser(Integer id, UserCreateRequest request) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.error(TO_CONSOLE, "User not found: ID={}", id);
+                    log.error(TO_CONSOLE, LoggingConstants.USER_NOT_FOUND_ID, id);
                     return new ResourceNotFoundException("User not found with id: " + id);
                 });
 
         if (!user.getUsername().equals(request.username())) {
-            log.debug("Checking new username availability: {}", request.username());
+            log.debug(LoggingConstants.DEBUG_CHECK_NEW_USERNAME, request.username());
             if (userRepository.existsByUsername(request.username())) {
-                log.error(TO_CONSOLE, "Username already exists: {}", request.username());
+                log.error(TO_CONSOLE, LoggingConstants.USERNAME_EXISTS, request.username());
                 throw new ResourceAlreadyExistsException("Username '" + request.username() + "' already exists");
             }
             user.setUsername(request.username());
         }
 
         if (!user.getEmail().equals(request.email())) {
-            log.debug("Checking new email availability: {}", request.email());
+            log.debug(LoggingConstants.DEBUG_CHECK_NEW_EMAIL, request.email());
             if (userRepository.existsByEmail(request.email())) {
-                log.error(TO_CONSOLE, "Email already exists: {}", request.email());
+                log.error(TO_CONSOLE, LoggingConstants.EMAIL_EXISTS, request.email());
                 throw new ResourceAlreadyExistsException("Email '" + request.email() + "' already exists");
             }
             user.setEmail(request.email());
@@ -103,29 +103,26 @@ public class UserServiceImpl implements UserService {
         user.setRole(request.role());
 
         User updatedUser = userRepository.save(user);
-        log.info(TO_CONSOLE, "Updated user ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.USER_UPDATED, id);
         return mapToResponse(updatedUser);
     }
 
     @Override
     @Transactional
     public void deleteUser(Integer id) {
-        log.debug("Checking user existence ID: {}", id);
+        log.debug(LoggingConstants.DEBUG_CHECK_USER_EXISTENCE, id);
         if (!userRepository.existsById(id)) {
-            log.error(TO_CONSOLE, "User not found: ID={}", id);
+            log.error(TO_CONSOLE, LoggingConstants.USER_NOT_FOUND_ID, id);
             throw new ResourceNotFoundException("User not found with id: " + id);
         }
         userRepository.deleteById(id);
-        log.info(TO_CONSOLE, "Deleted user ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.USER_DELETED, id);
     }
 
     @Bean
-    public UserDetailsService userDetailsService(){
-        return username ->{
-            User user = userRepository.findByEmail(username)
-                    .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-            return user;
-        };
+    public UserDetailsService userDetailsService() {
+        return username -> userRepository.findByEmail(username)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
     private UserResponse mapToResponse(User user) {

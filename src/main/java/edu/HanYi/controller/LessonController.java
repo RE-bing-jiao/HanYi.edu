@@ -1,5 +1,6 @@
 package edu.HanYi.controller;
 
+import edu.HanYi.constants.LoggingConstants;
 import edu.HanYi.dto.request.LessonCreateRequest;
 import edu.HanYi.dto.response.LessonResponse;
 import edu.HanYi.service.LessonService;
@@ -7,7 +8,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,31 +19,31 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class LessonController {
-    private static final Marker TO_CONSOLE = MarkerFactory.getMarker("TO_CONSOLE");
+    private static final Marker TO_CONSOLE = LoggingConstants.TO_CONSOLE;
     private final LessonService lessonService;
 
     @PostMapping
     public ResponseEntity<LessonResponse> createLesson(@Valid @RequestBody LessonCreateRequest request) {
-        log.info(TO_CONSOLE, "Creating lesson for course ID: {}", request.courseId());
+        log.info(TO_CONSOLE, LoggingConstants.LESSON_CREATE, request.courseId());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(lessonService.createLesson(request));
     }
 
     @GetMapping
     public ResponseEntity<List<LessonResponse>> getAllLessons() {
-        log.debug("Fetching all lessons");
+        log.debug(LoggingConstants.LESSON_FETCH);
         return ResponseEntity.ok(lessonService.getAllLessons());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<LessonResponse> getLessonById(@PathVariable Integer id) {
-        log.debug("Fetching lesson ID: {}", id);
+        log.debug(LoggingConstants.LESSON_FETCH, id);
         return ResponseEntity.ok(lessonService.getLessonById(id));
     }
 
     @GetMapping("/course/{courseId}")
     public ResponseEntity<List<LessonResponse>> getLessonsByCourseId(@PathVariable Integer courseId) {
-        log.debug("Fetching lessons for course ID: {}", courseId);
+        log.debug(LoggingConstants.LESSONS_BY_COURSE, courseId);
         return ResponseEntity.ok(lessonService.getLessonsByCourseId(courseId));
     }
 
@@ -51,13 +51,13 @@ public class LessonController {
     public ResponseEntity<LessonResponse> updateLesson(
             @PathVariable Integer id,
             @Valid @RequestBody LessonCreateRequest request) {
-        log.info(TO_CONSOLE, "Updating lesson ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.LESSON_UPDATE, id);
         return ResponseEntity.ok(lessonService.updateLesson(id, request));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLesson(@PathVariable Integer id) {
-        log.info(TO_CONSOLE, "Deleting lesson ID: {}", id);
+        log.info(TO_CONSOLE, LoggingConstants.LESSON_DELETE, id);
         lessonService.deleteLesson(id);
         return ResponseEntity.noContent().build();
     }
