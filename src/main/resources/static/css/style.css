@@ -190,6 +190,11 @@ color: #323232;
 .section {
 	background-color: #ffffff;
 	padding: 80px 0;
+	transition: opacity 0.5s ease;
+}
+
+.section.show {
+	opacity: 1;
 }
 
 /* Backgrounds
@@ -1178,11 +1183,13 @@ button {
 
 /* COURSES */
 .course-card {
+	position: relative;
 	height: 100%;
 	border-radius: 12px;
 	overflow: hidden;
 	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 	transition: transform 0.3s ease;
+	margin: 20px 0 20px 0;
 }
 
 .course-card:hover {
@@ -1220,6 +1227,7 @@ button {
 }
 
 .category-badge {
+	transition: transform 0.3s ease;
 	position: absolute;
 	top: 10px;
 	right: 10px;
