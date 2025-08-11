@@ -47,7 +47,18 @@ public class SecurityConfig {
                                 "/static/**",
                                 "/submit-contact"
                         ).permitAll()
-                        .requestMatchers("/api/users/**").hasRole("ADMIN")
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html",
+                                "/swagger-ui/index.html",
+                                ("/api/users/**"),
+                                ("/api/lessons/**"),
+                                ("/api/courses/**"),
+                                ("/api/flashcards/**"),
+                                ("/api/categories/**"),
+                                ("/api/entries/**")
+                        ).hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .logout(logout -> logout
