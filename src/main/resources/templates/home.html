@@ -15,11 +15,7 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
-
 	<link rel="stylesheet" th:href="@{/css/style.css}">
-
 	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -151,12 +147,14 @@
 		</div>
 	
 </section>
-<!-- section start --> 
+<!-- section start -->
+		<!-- Remove no-view and data-animation-effect attributes -->
 		<section class="section transprant-bg pclear secPadding">
-			<div class="container no-view" data-animation-effect="fadeIn">
+			<div class="container">
 				<h1 id="services" class="title text-center">Что мы предлагаем:</h1>
 				<div class="space"></div>
 				<div class="row">
+					<!-- Service items remain the same -->
 					<div class="col-md-4">
 						<div class="media block-list">
 							<div class="media-left">
@@ -179,7 +177,7 @@
 								<h3 class="media-heading">Онлайн-библиотека</h3>
 								<blockquote style="color: #dcdcdc;">
 									<p>Откройте для себя обширную коллекцию учебников, видео, аудио-материалов и практик – всё для глубокого погружения в мифологию и культуру Китая.</p>
-									
+
 								</blockquote>
 							</div>
 						</div>
@@ -193,7 +191,7 @@
 								<h3 class="media-heading">Готовые решения для практики</h3>
 								<blockquote style="color: #dcdcdc;">
 									<p>Используйте проверенные задания, упражения и шаблоны, чтобы закрепить знания и развить навыки общения – все материалы готовы к моментальному применению.</p>
-									
+
 								</blockquote>
 							</div>
 						</div>
@@ -209,7 +207,7 @@
 								<h3 class="media-heading">Интернет-оплата</h3>
 								<blockquote style="color: #dcdcdc;">
 									<p>Оформляйте обучение одним кликом с помощью безопасных и удобных платёжных систем – без бумажной волокиты и скрытых комиссий.</p>
-									
+
 								</blockquote>
 							</div>
 						</div>
@@ -223,7 +221,7 @@
 								<h3 class="media-heading">Скачивание материалов</h3>
 								<blockquote style="color: #dcdcdc;">
 									<p>Скачивайте уроки и дополнительные материалы в удобном формате, чтобы учиться в своем ритме – офлайн или онлайн.</p>
-									
+
 								</blockquote>
 							</div>
 						</div>
@@ -237,18 +235,17 @@
 								<h3 class="media-heading">Сертификация</h3>
 								<blockquote style="color: #dcdcdc;">
 									<p>Получайте официальные сертификаты, подтверждающие ваш уровень владения китайским, которые станут вашим пропуском к новым карьерным и образовательным возможностям.</p>
-									
+
 								</blockquote>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>			  
+			</div>
 		</section>
-		<!-- section end -->
 
-		<!-- section start --> 
-		<section class="section clearfix no-view secPadding" data-animation-effect="fadeIn">
+		<!-- Second section - simplified -->
+		<section class="section clearfix secPadding">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -263,8 +260,7 @@
 							<div class="col-md-6" style="font-size: 20px;">
 								<p><mark>Han Yi (汉易)</mark> — современная онлайн школа китайского языка, предлагающая интерактивные программы для студентов любого уровня. Мы обеспечиваем индивидуальный подход, подготовку к экзаменам HSK и HSKK, разговорные клубы и гибкий график занятий, чтобы обучение было удобным и продуктивным.</p>
 							</div>
-						</div>
-						<div class="space"></div>
+						</div><div class="space"></div>
 						<h2>Одна из <strong>ЛУЧШИХ</strong> школ Беларуси:</h2>
 						<div class="row">
 							<div class="col-md-6">
@@ -587,12 +583,9 @@
 			<!-- footer start -->
 
 		<script th:src="@{/plugins/jquery.min.js}"></script>
-		<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-		<script th:src="@{/plugins/modernizr.js}"></script>
-		<script th:src="@{/plugins/isotope/isotope.pkgd.min.js}"></script>
 		<script th:src="@{/plugins/jquery.backstretch.min.js}"></script>
-		<script th:src="@{/plugins/jquery.appear.js}"></script>
+		<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 		<script th:src="@{/js/custom.js}"></script>
 
-	</body>
-</html>
+            </body>
+        </html>

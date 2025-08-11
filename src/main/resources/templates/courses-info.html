@@ -126,14 +126,14 @@
         </th:block>
     </div>
 
-    <div class="row align-items-stretch">
-        <div th:each="course : ${courses}" class="col-md-3 mb-4 d-flex mx-2">
-            <div class="course-card w-100">
+    <div class="row align-items-stretch g-3">
+        <div th:each="course : ${courses}" class="col-md-3 mb-4 d-flex">
+            <div class="course-card">
                 <span class="category-badge" th:text="${course.categoryName}"></span>
 
                 <img src="/images/hsk4.png" alt="" class="course-image">
 
-                <div class="course-overlay">
+                <div>
                     <h5 th:text="${course.header}"></h5>
                     <p class="small" th:text="${course.description}"></p>
                     <small>Категория: <span th:text="${course.categoryName}"></span></small>
@@ -174,14 +174,8 @@
         </div>
     </div>
 </div>
-
 <script th:src="@{/plugins/jquery.min.js}"></script>
 <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{/plugins/modernizr.js}"></script>
-<script th:src="@{/plugins/isotope/isotope.pkgd.min.js}"></script>
-<script th:src="@{/plugins/jquery.backstretch.min.js}"></script>
-<script th:src="@{/plugins/jquery.appear.js}"></script>
-<script th:src="@{/js/custom.js}"></script>
 
 </body>
 </html>
