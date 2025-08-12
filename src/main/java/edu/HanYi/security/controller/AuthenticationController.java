@@ -33,7 +33,8 @@ public class AuthenticationController {
             return "redirect:/home";
         } catch (ResourceAlreadyExistsException e) {
             log.error(LoggingConstants.SIGNUP_ERROR, request.getEmail(), e);
-            redirectAttributes.addFlashAttribute("error", "Пользователь с таким email уже существует");
+            redirectAttributes.addFlashAttribute("error",
+                    "Пользователь с таким email уже существует");
             return "redirect:/signup";
         } catch (Exception e) {
             log.error(LoggingConstants.UNEXPECTED_SIGNUP_ERROR, e);
@@ -51,8 +52,9 @@ public class AuthenticationController {
 
             ResponseCookie jwtCookie = ResponseCookie.from("JWT", authResponse.getToken())
                     .httpOnly(true)
-                    .secure(false)
+                    .secure(true)
                     .path("/")
+                    .sameSite("Lax")
                     .maxAge(6 * 60 * 60)
                     .build();
 
