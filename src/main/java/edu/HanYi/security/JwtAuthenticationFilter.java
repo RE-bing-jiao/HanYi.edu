@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,51 +37,57 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             chain.doFilter(request, response);
             return;
         }
-        log.info("Processing request to: {}", request.getRequestURI());
 
-        String jwt = getJwtFromHeader(request);
-
+        String jwt = getJwtFromCookie(request);
         if (jwt == null) {
-            jwt = getJwtFromCookie(request);
-            log.debug("Extracted JWT from cookie: {}", jwt);
+            jwt = getJwtFromHeader(request);
+            log.debug("Extracted JWT from header");
         }
 
         if (jwt != null) {
-            try {
-                String userEmail = jwtService.extractUsername(jwt);
-                log.info("Extracted user email from token: {}", userEmail);
-
-                if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                    UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
-
-                    if (jwtService.isTokenValid(jwt, userDetails)) {
-                        log.info("Token is valid for user: {}, authorities: {}",
-                                userEmail, userDetails.getAuthorities());
-
-                        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                                userDetails, null, userDetails.getAuthorities());
-                        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-                        SecurityContextHolder.getContext().setAuthentication(authToken);
-                        log.info("Authenticated user: {}", userEmail);
-                    } else {
-                        log.warn("Invalid token for user: {}", userEmail);
-                    }
-                }
-            } catch (Exception e) {
-                SecurityContextHolder.clearContext();
-                clearJwtCookie(response);
-                log.error("Failed to process JWT authentication", e);
-            }
+            processJwt(request, response, jwt);
         }
 
         chain.doFilter(request, response);
     }
 
+    private void processJwt(HttpServletRequest request,
+                            HttpServletResponse response,
+                            String jwt) {
+        try {
+            String userEmail = jwtService.extractUsername(jwt);
+            if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
+
+                if (jwtService.isTokenValid(jwt, userDetails)) {
+                    authenticateUser(request, userDetails);
+                } else {
+                    log.warn("Invalid token for user: {}", userEmail);
+                }
+            }
+        } catch (Exception e) {
+            handleAuthenticationFailure(response, e);
+        }
+    }
+
+    private void authenticateUser(HttpServletRequest request, UserDetails userDetails) {
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                userDetails, null, userDetails.getAuthorities());
+        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        SecurityContextHolder.getContext().setAuthentication(authToken);
+        log.info("Authenticated user: {}", userDetails.getUsername());
+    }
+
+    private void handleAuthenticationFailure(HttpServletResponse response, Exception e) {
+        SecurityContextHolder.clearContext();
+        clearJwtCookie(response);
+        log.error("JWT authentication failed", e);
+    }
+
     private String getJwtFromHeader(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            return authHeader.substring(7);
+            return authHeader.substring(7).trim();
         }
         return null;
     }
@@ -98,10 +105,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private void clearJwtCookie(HttpServletResponse response) {
-        Cookie cookie = new Cookie("JWT", null);
-        cookie.setPath("/");
-        cookie.setHttpOnly(true);
-        cookie.setMaxAge(0);
-        response.addCookie(cookie);
+        ResponseCookie cookie = ResponseCookie.from("JWT", "")
+                .path("/")
+                .httpOnly(true)
+                .secure(true)
+                .sameSite("Lax")
+                .maxAge(0)
+                .build();
+        response.addHeader("Set-Cookie", cookie.toString());
     }
 }
