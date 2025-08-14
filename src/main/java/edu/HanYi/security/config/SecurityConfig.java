@@ -5,6 +5,7 @@ import jakarta.servlet.http.Cookie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -66,10 +67,15 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/home")
                         .addLogoutHandler((request, response, auth) -> {
                             SecurityContextHolder.clearContext();
-                            Cookie cookie = new Cookie("JWT", null);
-                            cookie.setPath("/");
-                            cookie.setMaxAge(0);
-                            response.addCookie(cookie);
+                            ResponseCookie cookie = ResponseCookie.from("JWT", "")
+                                    .path("/")
+                                    .maxAge(0)
+                                    .secure(true)
+                                    .sameSite("Lax")
+                                    .httpOnly(true)
+                                    .build();
+
+                            response.addHeader("Set-Cookie", cookie.toString());
                         })
                         .permitAll()
                 )

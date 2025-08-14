@@ -30,6 +30,7 @@ public class LoggingConstants {
     public static final String CATEGORY_EXISTS_NAME = "Category already exists: {}";
     public static final String CATEGORY_CREATED = "Created category ID: {}, name: {}";
     public static final String CATEGORY_UPDATE_FAILED_NAME = "Update failed - name already exists: {}";
+    public static final String CATEGORY_UPDATE_FAILED = "Update failed - category not found with ID: {}";
     public static final String CATEGORY_UPDATED = "Updated category ID: {}, new name: {}";
     public static final String CATEGORY_DELETE_FAILED = "Delete failed - category not found with ID: {}";
     public static final String CATEGORY_DELETED = "Deleted category ID: {}";
@@ -113,14 +114,17 @@ public class LoggingConstants {
     public static final String LOGIN_ERROR = "Login error";
 
     //DEBUG
+    //Course
     public static final String DEBUG_CHECK_HEADER = "Checking if course exists with header: {}";
-    public static final String DEBUG_FETCH_CATEGORY = "Fetching category with ID: {}";
     public static final String DEBUG_CREATE_COURSE = "Creating new course: {}";
     public static final String DEBUG_FETCH_COURSE = "Found course: {}";
     public static final String DEBUG_FETCH_COURSES_CATEGORY = "Fetching courses for category ID: {}";
     public static final String DEBUG_CATEGORY_EXISTS = "Category exists, fetching courses";
     public static final String DEBUG_FETCH_COURSE_UPDATE = "Fetching course for update ID: {}";
     public static final String DEBUG_CHECK_HEADER_AVAILABILITY = "Checking header availability: {}";
+    public static final String DEBUG_FETCH_CATEGORY = "Fetching category with ID: {}";
+
+    //Entries
     public static final String DEBUG_CHECK_ENTRY_EXISTS = "Checking if entry exists for user ID: {} and course ID: {}";
     public static final String DEBUG_FETCH_USER = "Fetching user with ID: {}";
     public static final String DEBUG_FETCH_COURSE_ENTRY = "Fetching course with ID: {}";
@@ -129,21 +133,28 @@ public class LoggingConstants {
     public static final String DEBUG_FETCH_ENTRIES_USER = "Fetching entries for user ID: {}";
     public static final String DEBUG_FETCH_ENTRIES_COURSE = "Fetching entries for course ID: {}";
     public static final String DEBUG_CHECK_ENTRY_EXISTENCE = "Checking if entry exists with ID: {}";
+
+    //Lesson
     public static final String DEBUG_CHECK_LESSON_EXISTENCE = "Checking lesson existence: header={}, courseId={}";
     public static final String DEBUG_FETCH_COURSE_LESSON = "Fetching course ID: {}";
     public static final String DEBUG_CHECK_COURSE_EXISTENCE = "Checking course existence ID: {}";
     public static final String DEBUG_CHECK_LESSON_HEADER = "Checking lesson header uniqueness: header={}, courseId={}";
+    public static final String DEBUG_CHECK_LESSON_EXISTENCE_ID = "Checking lesson existence ID: {}";
+
+    //User
     public static final String DEBUG_CHECK_USERNAME = "Checking username availability: {}";
     public static final String DEBUG_CHECK_EMAIL = "Checking email availability: {}";
     public static final String DEBUG_CHECK_NEW_USERNAME = "Checking new username availability: {}";
     public static final String DEBUG_CHECK_NEW_EMAIL = "Checking new email availability: {}";
     public static final String DEBUG_CHECK_USER_EXISTENCE = "Checking user existence ID: {}";
-    public static final String DEBUG_CHECK_LESSON_EXISTENCE_ID = "Checking lesson existence ID: {}";
+
+    //Flashcard
     public static final String DEBUG_FETCH_FLASHCARD = "Fetching flashcard ID: {}";
     public static final String DEBUG_CHECK_FLASHCARD_EXISTENCE = "Checking flashcard existence ID: {}";
     public static final String DEBUG_FETCH_FLASHCARDS_USER = "Fetching flashcards for user ID: {}";
+
+    //Category
     public static final String DEBUG_CREATE_CATEGORY = "Creating new category: {}";
     public static final String DEBUG_FOUND_CATEGORY = "Found category: {}";
-    public static final String CATEGORY_UPDATE_FAILED = "Update failed - category not found with ID: {}";
     public static final String DEBUG_CHECK_CATEGORY_EXISTS = "Checking if category exists with name: {}";
 }
