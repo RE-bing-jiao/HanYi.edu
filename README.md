@@ -66,6 +66,8 @@ Java 17 | Spring Boot 3 | PostgreSQL | Maven | Bootstrap | jQuery | Swagger | Do
 | PUT    | `/api/users/{id}`             | Update a user                |
 | DELETE | `/api/users/{id}`             | Delete a user                |
 
+[MIT License](https://mit-license.org/) | Home page based on Victory Educational template. credits: @learning-zone
+
 ## Project Structure
 
 ```bash
@@ -108,4 +110,3 @@ han-yi-edu/
 ├── Dockerfile     
 └── docker-compose.yml 
 
-[MIT License](https://mit-license.org/) | Home page based on Victory Educational template. credits: @learning-zone
