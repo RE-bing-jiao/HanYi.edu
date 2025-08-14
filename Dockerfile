@@ -8,5 +8,5 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
-VOLUME /app/logs
+VOLUME /app/logs/han-yi-logs
 ENTRYPOINT ["java", "-jar", "app.jar"]
